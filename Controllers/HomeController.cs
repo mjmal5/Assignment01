@@ -4,7 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 
-namespace FIT5032_Assignment01.Controllers
+namespace FIT5032_Assignment.Controllers
 {
     public class HomeController : Controller
     {

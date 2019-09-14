@@ -10,9 +10,9 @@ using Microsoft.AspNet.Identity.EntityFramework;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin;
 using Microsoft.Owin.Security;
-using FIT5032_Assignment01.Models;
+using FIT5032_Assignment.Models;
 
-namespace FIT5032_Assignment01
+namespace FIT5032_Assignment
 {
     public class EmailService : IIdentityMessageService
     {

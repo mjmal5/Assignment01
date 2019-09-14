@@ -1,8 +1,8 @@
 ﻿using Microsoft.Owin;
 using Owin;
 
-[assembly: OwinStartupAttribute(typeof(FIT5032_Assignment01.Startup))]
-namespace FIT5032_Assignment01
+[assembly: OwinStartupAttribute(typeof(FIT5032_Assignment.Startup))]
+namespace FIT5032_Assignment
 {
     public partial class Startup
     {

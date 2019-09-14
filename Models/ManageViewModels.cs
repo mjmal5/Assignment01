@@ -3,7 +3,7 @@ using System.ComponentModel.DataAnnotations;
 using Microsoft.AspNet.Identity;
 using Microsoft.Owin.Security;
 
-namespace FIT5032_Assignment01.Models
+namespace FIT5032_Assignment.Models
 {
     public class IndexViewModel
     {

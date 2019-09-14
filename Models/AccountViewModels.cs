@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
-namespace FIT5032_Assignment01.Models
+namespace FIT5032_Assignment.Models
 {
     public class ExternalLoginConfirmationViewModel
     {

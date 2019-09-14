@@ -6,7 +6,7 @@ using System.Web.Mvc;
 using System.Web.Optimization;
 using System.Web.Routing;
 
-namespace FIT5032_Assignment01
+namespace FIT5032_Assignment
 {
     public class MvcApplication : System.Web.HttpApplication
     {

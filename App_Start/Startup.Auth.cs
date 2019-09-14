@@ -5,9 +5,9 @@ using Microsoft.Owin;
 using Microsoft.Owin.Security.Cookies;
 using Microsoft.Owin.Security.Google;
 using Owin;
-using FIT5032_Assignment01.Models;
+using FIT5032_Assignment.Models;
 
-namespace FIT5032_Assignment01
+namespace FIT5032_Assignment
 {
     public partial class Startup
     {

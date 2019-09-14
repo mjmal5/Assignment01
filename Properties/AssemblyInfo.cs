@@ -5,11 +5,11 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("FIT5032_Assignment01")]
+[assembly: AssemblyTitle("FIT5032_Assignment")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("FIT5032_Assignment01")]
+[assembly: AssemblyProduct("FIT5032_Assignment")]
 [assembly: AssemblyCopyright("Copyright ©  2019")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
@@ -20,7 +20,7 @@ using System.Runtime.InteropServices;
 [assembly: ComVisible(false)]
 
 // The following GUID is for the ID of the typelib if this project is exposed to COM
-[assembly: Guid("c86633f6-e7e9-4427-8cce-c97c9d38aa5e")]
+[assembly: Guid("8784ebdc-2619-403e-9d70-a006749f6abb")]
 
 // Version information for an assembly consists of the following four values:
 //
