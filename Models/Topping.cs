@@ -14,10 +14,16 @@ namespace FIT5032_Assignment.Models
     
     public partial class Topping
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public Topping()
+        {
+            this.Pizza_Topping = new HashSet<Pizza_Topping>();
+        }
+    
         public int ToppingId { get; set; }
         public string ToppingName { get; set; }
-        public int PizzaPizzaId { get; set; }
     
-        public virtual Pizza Pizza { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Pizza_Topping> Pizza_Topping { get; set; }
     }
 }

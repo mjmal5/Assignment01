@@ -8,9 +8,19 @@
   <EntityContainer Name="MariosPizzaModelStoreContainer">
     <EntitySet Name="Pizzas" EntityType="MariosPizzaModel.Store.Pizzas" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="Toppings" EntityType="MariosPizzaModel.Store.Toppings" store:Type="Tables" Schema="dbo" />
-    <AssociationSet Name="PizzaTopping" Association="MariosPizzaModel.Store.PizzaTopping">
+    <EntitySet Name="Pizza_Topping" EntityType="MariosPizzaModel.Store.Pizza_Topping" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Orders" EntityType="MariosPizzaModel.Store.Orders" store:Type="Tables" Schema="dbo" />
+    <AssociationSet Name="PizzaPizza_Topping" Association="MariosPizzaModel.Store.PizzaPizza_Topping">
       <End Role="Pizza" EntitySet="Pizzas" />
+      <End Role="Pizza_Topping" EntitySet="Pizza_Topping" />
+    </AssociationSet>
+    <AssociationSet Name="ToppingPizza_Topping" Association="MariosPizzaModel.Store.ToppingPizza_Topping">
       <End Role="Topping" EntitySet="Toppings" />
+      <End Role="Pizza_Topping" EntitySet="Pizza_Topping" />
+    </AssociationSet>
+    <AssociationSet Name="OrderPizza" Association="MariosPizzaModel.Store.OrderPizza">
+      <End Role="Order" EntitySet="Orders" />
+      <End Role="Pizza" EntitySet="Pizzas" />
     </AssociationSet>
   </EntityContainer>
   <EntityType Name="Pizzas">
@@ -21,6 +31,7 @@
     <Property Name="PizzaName" Type="nvarchar(max)" Nullable="false" />
     <Property Name="PizzaDescription" Type="nvarchar(max)" Nullable="false" />
     <Property Name="PizzaPrice" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="OrderId" Type="int" Nullable="false" />
   </EntityType>
   <EntityType Name="Toppings">
     <Key>
@@ -28,17 +39,57 @@
     </Key>
     <Property Name="ToppingId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="ToppingName" Type="nvarchar(max)" Nullable="false" />
-    <Property Name="PizzaPizzaId" Type="int" Nullable="false" />
   </EntityType>
-  <Association Name="PizzaTopping">
+  <EntityType Name="Pizza_Topping">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="PizzaPizzaId" Type="int" Nullable="false" />
+    <Property Name="ToppingToppingId" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Orders">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="OrderTime" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="OrderCurrency" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="OrderTotal" Type="nvarchar(max)" Nullable="false" />
+  </EntityType>
+  <Association Name="PizzaPizza_Topping">
     <End Role="Pizza" Type="MariosPizzaModel.Store.Pizzas" Multiplicity="1" />
-    <End Role="Topping" Type="MariosPizzaModel.Store.Toppings" Multiplicity="*" />
+    <End Role="Pizza_Topping" Type="MariosPizzaModel.Store.Pizza_Topping" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="Pizza">
         <PropertyRef Name="PizzaId" />
       </Principal>
-      <Dependent Role="Topping">
+      <Dependent Role="Pizza_Topping">
         <PropertyRef Name="PizzaPizzaId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="ToppingPizza_Topping">
+    <End Role="Topping" Type="MariosPizzaModel.Store.Toppings" Multiplicity="1" />
+    <End Role="Pizza_Topping" Type="MariosPizzaModel.Store.Pizza_Topping" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Topping">
+        <PropertyRef Name="ToppingId" />
+      </Principal>
+      <Dependent Role="Pizza_Topping">
+        <PropertyRef Name="ToppingToppingId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="OrderPizza">
+    <End Role="Order" Type="MariosPizzaModel.Store.Orders" Multiplicity="1" />
+    <End Role="Pizza" Type="MariosPizzaModel.Store.Pizzas" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Order">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Pizza">
+        <PropertyRef Name="OrderId" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
@@ -49,9 +100,19 @@
         <EntityContainer Name="MariosPizzaModelContainer" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="Pizzas" EntityType="MariosPizzaModel.Pizza" />
           <EntitySet Name="Toppings" EntityType="MariosPizzaModel.Topping" />
-          <AssociationSet Name="PizzaTopping" Association="MariosPizzaModel.PizzaTopping">
+          <EntitySet Name="Pizza_Topping" EntityType="MariosPizzaModel.Pizza_Topping" />
+          <AssociationSet Name="PizzaPizza_Topping" Association="MariosPizzaModel.PizzaPizza_Topping">
             <End Role="Pizza" EntitySet="Pizzas" />
+            <End Role="Pizza_Topping" EntitySet="Pizza_Topping" />
+          </AssociationSet>
+          <AssociationSet Name="ToppingPizza_Topping" Association="MariosPizzaModel.ToppingPizza_Topping">
             <End Role="Topping" EntitySet="Toppings" />
+            <End Role="Pizza_Topping" EntitySet="Pizza_Topping" />
+          </AssociationSet>
+          <EntitySet Name="Orders" EntityType="MariosPizzaModel.Order" />
+          <AssociationSet Name="OrderPizza" Association="MariosPizzaModel.OrderPizza">
+            <End Role="Order" EntitySet="Orders" />
+            <End Role="Pizza" EntitySet="Pizzas" />
           </AssociationSet>
         </EntityContainer>
         <EntityType Name="Pizza">
@@ -62,7 +123,9 @@
           <Property Name="PizzaName" Type="String" Nullable="false" />
           <Property Name="PizzaDescription" Type="String" Nullable="false" />
           <Property Name="PizzaPrice" Type="String" Nullable="false" />
-          <NavigationProperty Name="Toppings" Relationship="MariosPizzaModel.PizzaTopping" FromRole="Pizza" ToRole="Topping" />
+          <NavigationProperty Name="Pizza_Topping" Relationship="MariosPizzaModel.PizzaPizza_Topping" FromRole="Pizza" ToRole="Pizza_Topping" />
+          <NavigationProperty Name="Order" Relationship="MariosPizzaModel.OrderPizza" FromRole="Pizza" ToRole="Order" />
+          <Property Name="OrderId" Type="Int32" Nullable="false" />
         </EntityType>
         <EntityType Name="Topping">
           <Key>
@@ -70,18 +133,61 @@
           </Key>
           <Property Name="ToppingId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="ToppingName" Type="String" Nullable="false" />
-          <NavigationProperty Name="Pizza" Relationship="MariosPizzaModel.PizzaTopping" FromRole="Topping" ToRole="Pizza" />
-          <Property Name="PizzaPizzaId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Pizza_Topping" Relationship="MariosPizzaModel.ToppingPizza_Topping" FromRole="Topping" ToRole="Pizza_Topping" />
         </EntityType>
-        <Association Name="PizzaTopping">
+        <EntityType Name="Pizza_Topping">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <NavigationProperty Name="Pizza" Relationship="MariosPizzaModel.PizzaPizza_Topping" FromRole="Pizza_Topping" ToRole="Pizza" />
+          <Property Name="PizzaPizzaId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Topping" Relationship="MariosPizzaModel.ToppingPizza_Topping" FromRole="Pizza_Topping" ToRole="Topping" />
+          <Property Name="ToppingToppingId" Type="Int32" Nullable="false" />
+        </EntityType>
+        <Association Name="PizzaPizza_Topping">
           <End Type="MariosPizzaModel.Pizza" Role="Pizza" Multiplicity="1" />
-          <End Type="MariosPizzaModel.Topping" Role="Topping" Multiplicity="*" />
+          <End Type="MariosPizzaModel.Pizza_Topping" Role="Pizza_Topping" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Pizza">
               <PropertyRef Name="PizzaId" />
             </Principal>
-            <Dependent Role="Topping">
+            <Dependent Role="Pizza_Topping">
               <PropertyRef Name="PizzaPizzaId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="ToppingPizza_Topping">
+          <End Type="MariosPizzaModel.Topping" Role="Topping" Multiplicity="1" />
+          <End Type="MariosPizzaModel.Pizza_Topping" Role="Pizza_Topping" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Topping">
+              <PropertyRef Name="ToppingId" />
+            </Principal>
+            <Dependent Role="Pizza_Topping">
+              <PropertyRef Name="ToppingToppingId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="Order">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="OrderTime" Type="String" Nullable="false" />
+          <Property Name="OrderCurrency" Type="String" Nullable="false" />
+          <Property Name="OrderTotal" Type="String" Nullable="false" />
+          <NavigationProperty Name="Pizzas" Relationship="MariosPizzaModel.OrderPizza" FromRole="Order" ToRole="Pizza" />
+        </EntityType>
+        <Association Name="OrderPizza">
+          <End Type="MariosPizzaModel.Order" Role="Order" Multiplicity="1" />
+          <End Type="MariosPizzaModel.Pizza" Role="Pizza" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Order">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Pizza">
+              <PropertyRef Name="OrderId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -98,6 +204,7 @@
           <ScalarProperty Name="PizzaName" ColumnName="PizzaName" />
           <ScalarProperty Name="PizzaDescription" ColumnName="PizzaDescription" />
           <ScalarProperty Name="PizzaPrice" ColumnName="PizzaPrice" />
+          <ScalarProperty Name="OrderId" ColumnName="OrderId" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -106,7 +213,25 @@
         <MappingFragment StoreEntitySet="Toppings">
           <ScalarProperty Name="ToppingId" ColumnName="ToppingId" />
           <ScalarProperty Name="ToppingName" ColumnName="ToppingName" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Pizza_Topping">
+      <EntityTypeMapping TypeName="IsTypeOf(MariosPizzaModel.Pizza_Topping)">
+        <MappingFragment StoreEntitySet="Pizza_Topping">
+          <ScalarProperty Name="Id" ColumnName="Id" />
           <ScalarProperty Name="PizzaPizzaId" ColumnName="PizzaPizzaId" />
+          <ScalarProperty Name="ToppingToppingId" ColumnName="ToppingToppingId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Orders">
+      <EntityTypeMapping TypeName="IsTypeOf(MariosPizzaModel.Order)">
+        <MappingFragment StoreEntitySet="Orders">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="OrderTime" ColumnName="OrderTime" />
+          <ScalarProperty Name="OrderCurrency" ColumnName="OrderCurrency" />
+          <ScalarProperty Name="OrderTotal" ColumnName="OrderTotal" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

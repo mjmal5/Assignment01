@@ -27,5 +27,7 @@ namespace FIT5032_Assignment.Models
     
         public virtual DbSet<Pizza> Pizzas { get; set; }
         public virtual DbSet<Topping> Toppings { get; set; }
+        public virtual DbSet<Pizza_Topping> Pizza_Topping { get; set; }
+        public virtual DbSet<Order> Orders { get; set; }
     }
 }

@@ -17,15 +17,17 @@ namespace FIT5032_Assignment.Models
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Pizza()
         {
-            this.Toppings = new HashSet<Topping>();
+            this.Pizza_Topping = new HashSet<Pizza_Topping>();
         }
     
         public int PizzaId { get; set; }
         public string PizzaName { get; set; }
         public string PizzaDescription { get; set; }
         public string PizzaPrice { get; set; }
+        public int OrderId { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Topping> Toppings { get; set; }
+        public virtual ICollection<Pizza_Topping> Pizza_Topping { get; set; }
+        public virtual Order Order { get; set; }
     }
 }

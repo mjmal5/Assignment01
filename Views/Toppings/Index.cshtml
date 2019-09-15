@@ -1,11 +1,11 @@
 ﻿@model IEnumerable<FIT5032_Assignment.Models.Topping>
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Topping Manager";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Index</h2>
+<h2>Topping Manager</h2>
 
 <p>
     @Html.ActionLink("Create New", "Create")
@@ -15,26 +15,21 @@
         <th>
             @Html.DisplayNameFor(model => model.ToppingName)
         </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Pizza.PizzaName)
-        </th>
         <th></th>
     </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.ToppingName)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Pizza.PizzaName)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.ToppingId }) |
-            @Html.ActionLink("Details", "Details", new { id=item.ToppingId }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.ToppingId })
-        </td>
-    </tr>
-}
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.ToppingName)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.ToppingId }) |
+                @Html.ActionLink("Details", "Details", new { id = item.ToppingId }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.ToppingId })
+            </td>
+        </tr>
+    }
 
 </table>

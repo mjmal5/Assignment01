@@ -18,8 +18,7 @@ namespace FIT5032_Assignment.Controllers
         // GET: Toppings
         public ActionResult Index()
         {
-            var toppings = db.Toppings.Include(t => t.Pizza);
-            return View(toppings.ToList());
+            return View(db.Toppings.ToList());
         }
 
         // GET: Toppings/Details/5
@@ -40,7 +39,6 @@ namespace FIT5032_Assignment.Controllers
         // GET: Toppings/Create
         public ActionResult Create()
         {
-            ViewBag.PizzaPizzaId = new SelectList(db.Pizzas, "PizzaId", "PizzaName");
             return View();
         }
 
@@ -49,7 +47,7 @@ namespace FIT5032_Assignment.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "ToppingId,ToppingName,PizzaPizzaId")] Topping topping)
+        public ActionResult Create([Bind(Include = "ToppingId,ToppingName")] Topping topping)
         {
             if (ModelState.IsValid)
             {
@@ -58,7 +56,6 @@ namespace FIT5032_Assignment.Controllers
                 return RedirectToAction("Index");
             }
 
-            ViewBag.PizzaPizzaId = new SelectList(db.Pizzas, "PizzaId", "PizzaName", topping.PizzaPizzaId);
             return View(topping);
         }
 
@@ -74,7 +71,6 @@ namespace FIT5032_Assignment.Controllers
             {
                 return HttpNotFound();
             }
-            ViewBag.PizzaPizzaId = new SelectList(db.Pizzas, "PizzaId", "PizzaName", topping.PizzaPizzaId);
             return View(topping);
         }
 
@@ -83,7 +79,7 @@ namespace FIT5032_Assignment.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "ToppingId,ToppingName,PizzaPizzaId")] Topping topping)
+        public ActionResult Edit([Bind(Include = "ToppingId,ToppingName")] Topping topping)
         {
             if (ModelState.IsValid)
             {
@@ -91,7 +87,6 @@ namespace FIT5032_Assignment.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            ViewBag.PizzaPizzaId = new SelectList(db.Pizzas, "PizzaId", "PizzaName", topping.PizzaPizzaId);
             return View(topping);
         }
 

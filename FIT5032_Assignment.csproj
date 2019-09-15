@@ -172,6 +172,7 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\OrdersController.cs" />
     <Compile Include="Controllers\PizzasController.cs" />
     <Compile Include="Controllers\ToppingsController.cs" />
     <Compile Include="Global.asax.cs">
@@ -195,7 +196,13 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>MariosPizzaModel.edmx</DependentUpon>
     </Compile>
+    <Compile Include="Models\Order.cs">
+      <DependentUpon>MariosPizzaModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\Pizza.cs">
+      <DependentUpon>MariosPizzaModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Pizza_Topping.cs">
       <DependentUpon>MariosPizzaModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Topping.cs">
@@ -292,6 +299,11 @@
     <Content Include="Views\Toppings\Details.cshtml" />
     <Content Include="Views\Toppings\Edit.cshtml" />
     <Content Include="Views\Toppings\Index.cshtml" />
+    <Content Include="Views\Orders\Create.cshtml" />
+    <Content Include="Views\Orders\Delete.cshtml" />
+    <Content Include="Views\Orders\Details.cshtml" />
+    <Content Include="Views\Orders\Edit.cshtml" />
+    <Content Include="Views\Orders\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
