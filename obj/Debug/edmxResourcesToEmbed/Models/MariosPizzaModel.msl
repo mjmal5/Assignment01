@@ -1,0 +1,76 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="MariosPizzaModelStoreContainer" CdmEntityContainer="MariosPizzaModelContainer">
+    <EntitySetMapping Name="Pizzas">
+      <EntityTypeMapping TypeName="IsTypeOf(MariosPizzaModel.Pizza)">
+        <MappingFragment StoreEntitySet="Pizzas">
+          <ScalarProperty Name="PizzaId" ColumnName="PizzaId" />
+          <ScalarProperty Name="PizzaName" ColumnName="PizzaName" />
+          <ScalarProperty Name="PizzaDescription" ColumnName="PizzaDescription" />
+          <ScalarProperty Name="PizzaPrice" ColumnName="PizzaPrice" />
+          <ScalarProperty Name="OrderId" ColumnName="OrderId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Toppings">
+      <EntityTypeMapping TypeName="IsTypeOf(MariosPizzaModel.Topping)">
+        <MappingFragment StoreEntitySet="Toppings">
+          <ScalarProperty Name="ToppingId" ColumnName="ToppingId" />
+          <ScalarProperty Name="ToppingName" ColumnName="ToppingName" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Pizza_Topping">
+      <EntityTypeMapping TypeName="IsTypeOf(MariosPizzaModel.Pizza_Topping)">
+        <MappingFragment StoreEntitySet="Pizza_Topping">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="PizzaPizzaId" ColumnName="PizzaPizzaId" />
+          <ScalarProperty Name="ToppingToppingId" ColumnName="ToppingToppingId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Orders">
+      <EntityTypeMapping TypeName="IsTypeOf(MariosPizzaModel.Order)">
+        <MappingFragment StoreEntitySet="Orders">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="OrderTime" ColumnName="OrderTime" />
+          <ScalarProperty Name="OrderCurrency" ColumnName="OrderCurrency" />
+          <ScalarProperty Name="OrderTotal" ColumnName="OrderTotal" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Customers">
+      <EntityTypeMapping TypeName="IsTypeOf(MariosPizzaModel.Customer)">
+        <MappingFragment StoreEntitySet="Customers">
+          <ScalarProperty Name="CustId" ColumnName="CustId" />
+          <ScalarProperty Name="CustFirstName" ColumnName="CustFirstName" />
+          <ScalarProperty Name="CustLastName" ColumnName="CustLastName" />
+          <ScalarProperty Name="CustPhoneNumber" ColumnName="CustPhoneNumber" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Bookings">
+      <EntityTypeMapping TypeName="IsTypeOf(MariosPizzaModel.Booking)">
+        <MappingFragment StoreEntitySet="Bookings">
+          <ScalarProperty Name="BookingId" ColumnName="BookingId" />
+          <ScalarProperty Name="BookingGuestNum" ColumnName="BookingGuestNum" />
+          <ScalarProperty Name="BookingDate" ColumnName="BookingDate" />
+          <ScalarProperty Name="BookingTime" ColumnName="BookingTime" />
+          <ScalarProperty Name="RestarauntRestId" ColumnName="RestarauntRestId" />
+          <ScalarProperty Name="CustomerCustId" ColumnName="CustomerCustId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Restaraunts">
+      <EntityTypeMapping TypeName="IsTypeOf(MariosPizzaModel.Restaraunt)">
+        <MappingFragment StoreEntitySet="Restaraunts">
+          <ScalarProperty Name="RestId" ColumnName="RestId" />
+          <ScalarProperty Name="RestAddress" ColumnName="RestAddress" />
+          <ScalarProperty Name="RestPhone" ColumnName="RestPhone" />
+          <ScalarProperty Name="RestOpenTime" ColumnName="RestOpenTime" />
+          <ScalarProperty Name="RestCloseTime" ColumnName="RestCloseTime" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

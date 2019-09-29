@@ -1,0 +1,59 @@
+﻿@font-face {
+    font-family: orderPizza;
+    src: url("../fonts/OrderPizza.woff2") format("woff2"), 
+        url("../fonts/OrderPizza.woff") format("woff"), 
+        url("../fonts/OrderPizza.ttf") format("ttf"), 
+        url("../fonts/OrderPizza.eot") format("eot");
+}
+
+body {
+    background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url("Images/Pizza-Background.jpg") no-repeat fixed center;
+    background-size: cover;
+    color: #ffffff;
+}
+
+footer {
+    color: #ffffff;
+    text-align: center;
+    position: absolute;
+    bottom: 0;
+    width: 100vw;
+}
+
+a {
+    color: #ffffff;
+}
+
+a:hover {
+    color: #ffffff;
+    text-decoration: none;
+}
+
+h1 {
+    font-size: 2.8em;
+    line-height: 2.5em;
+    letter-spacing: 5px;
+}
+
+select {
+    color: #555555;
+    width: 100%;
+    border-radius: 4px;
+    padding: 6px 12px;
+    height: 34px;
+    font-size: 12px;
+}
+
+.heading-home {
+    font-family: orderPizza;
+    text-align: center;   
+}
+
+.content-padding {
+    padding-top: 20vh;
+}
+
+.navbar-brand {
+    font-family: orderPizza;
+    font-size: 12px;
+}

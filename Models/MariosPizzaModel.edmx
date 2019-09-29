@@ -4,96 +4,161 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-    <Schema Namespace="MariosPizzaModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2012" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
-  <EntityContainer Name="MariosPizzaModelStoreContainer">
-    <EntitySet Name="Pizzas" EntityType="MariosPizzaModel.Store.Pizzas" store:Type="Tables" Schema="dbo" />
-    <EntitySet Name="Toppings" EntityType="MariosPizzaModel.Store.Toppings" store:Type="Tables" Schema="dbo" />
-    <EntitySet Name="Pizza_Topping" EntityType="MariosPizzaModel.Store.Pizza_Topping" store:Type="Tables" Schema="dbo" />
-    <EntitySet Name="Orders" EntityType="MariosPizzaModel.Store.Orders" store:Type="Tables" Schema="dbo" />
-    <AssociationSet Name="PizzaPizza_Topping" Association="MariosPizzaModel.Store.PizzaPizza_Topping">
-      <End Role="Pizza" EntitySet="Pizzas" />
-      <End Role="Pizza_Topping" EntitySet="Pizza_Topping" />
-    </AssociationSet>
-    <AssociationSet Name="ToppingPizza_Topping" Association="MariosPizzaModel.Store.ToppingPizza_Topping">
-      <End Role="Topping" EntitySet="Toppings" />
-      <End Role="Pizza_Topping" EntitySet="Pizza_Topping" />
-    </AssociationSet>
-    <AssociationSet Name="OrderPizza" Association="MariosPizzaModel.Store.OrderPizza">
-      <End Role="Order" EntitySet="Orders" />
-      <End Role="Pizza" EntitySet="Pizzas" />
-    </AssociationSet>
-  </EntityContainer>
-  <EntityType Name="Pizzas">
-    <Key>
-      <PropertyRef Name="PizzaId" />
-    </Key>
-    <Property Name="PizzaId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="PizzaName" Type="nvarchar(max)" Nullable="false" />
-    <Property Name="PizzaDescription" Type="nvarchar(max)" Nullable="false" />
-    <Property Name="PizzaPrice" Type="nvarchar(max)" Nullable="false" />
-    <Property Name="OrderId" Type="int" Nullable="false" />
-  </EntityType>
-  <EntityType Name="Toppings">
-    <Key>
-      <PropertyRef Name="ToppingId" />
-    </Key>
-    <Property Name="ToppingId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="ToppingName" Type="nvarchar(max)" Nullable="false" />
-  </EntityType>
-  <EntityType Name="Pizza_Topping">
-    <Key>
-      <PropertyRef Name="Id" />
-    </Key>
-    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="PizzaPizzaId" Type="int" Nullable="false" />
-    <Property Name="ToppingToppingId" Type="int" Nullable="false" />
-  </EntityType>
-  <EntityType Name="Orders">
-    <Key>
-      <PropertyRef Name="Id" />
-    </Key>
-    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="OrderTime" Type="nvarchar(max)" Nullable="false" />
-    <Property Name="OrderCurrency" Type="nvarchar(max)" Nullable="false" />
-    <Property Name="OrderTotal" Type="nvarchar(max)" Nullable="false" />
-  </EntityType>
-  <Association Name="PizzaPizza_Topping">
-    <End Role="Pizza" Type="MariosPizzaModel.Store.Pizzas" Multiplicity="1" />
-    <End Role="Pizza_Topping" Type="MariosPizzaModel.Store.Pizza_Topping" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Pizza">
-        <PropertyRef Name="PizzaId" />
-      </Principal>
-      <Dependent Role="Pizza_Topping">
-        <PropertyRef Name="PizzaPizzaId" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="ToppingPizza_Topping">
-    <End Role="Topping" Type="MariosPizzaModel.Store.Toppings" Multiplicity="1" />
-    <End Role="Pizza_Topping" Type="MariosPizzaModel.Store.Pizza_Topping" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Topping">
-        <PropertyRef Name="ToppingId" />
-      </Principal>
-      <Dependent Role="Pizza_Topping">
-        <PropertyRef Name="ToppingToppingId" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="OrderPizza">
-    <End Role="Order" Type="MariosPizzaModel.Store.Orders" Multiplicity="1" />
-    <End Role="Pizza" Type="MariosPizzaModel.Store.Pizzas" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Order">
-        <PropertyRef Name="Id" />
-      </Principal>
-      <Dependent Role="Pizza">
-        <PropertyRef Name="OrderId" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-</Schema></edmx:StorageModels>
+    <Schema Namespace="MariosPizzaModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Bookings">
+          <Key>
+            <PropertyRef Name="BookingId" />
+          </Key>
+          <Property Name="BookingId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="BookingGuestNum" Type="int" Nullable="false" />
+          <Property Name="BookingDate" Type="datetime" Nullable="false" />
+          <Property Name="BookingTime" Type="time" Precision="7" Nullable="false" />
+          <Property Name="RestarauntRestId" Type="int" Nullable="false" />
+          <Property Name="CustomerCustId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Customers">
+          <Key>
+            <PropertyRef Name="CustId" />
+          </Key>
+          <Property Name="CustId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CustFirstName" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="CustLastName" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="CustPhoneNumber" Type="nvarchar(max)" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Orders">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="OrderTime" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="OrderCurrency" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="OrderTotal" Type="nvarchar(max)" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Pizza_Topping">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="PizzaPizzaId" Type="int" Nullable="false" />
+          <Property Name="ToppingToppingId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Pizzas">
+          <Key>
+            <PropertyRef Name="PizzaId" />
+          </Key>
+          <Property Name="PizzaId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="PizzaName" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="PizzaDescription" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="PizzaPrice" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="OrderId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Restaraunts">
+          <Key>
+            <PropertyRef Name="RestId" />
+          </Key>
+          <Property Name="RestId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="RestAddress" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="RestPhone" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="RestOpenTime" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="RestCloseTime" Type="nvarchar(max)" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Toppings">
+          <Key>
+            <PropertyRef Name="ToppingId" />
+          </Key>
+          <Property Name="ToppingId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ToppingName" Type="nvarchar(max)" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_CustomerBooking">
+          <End Role="Customers" Type="Self.Customers" Multiplicity="1" />
+          <End Role="Bookings" Type="Self.Bookings" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Customers">
+              <PropertyRef Name="CustId" />
+            </Principal>
+            <Dependent Role="Bookings">
+              <PropertyRef Name="CustomerCustId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_OrderPizza">
+          <End Role="Orders" Type="Self.Orders" Multiplicity="1" />
+          <End Role="Pizzas" Type="Self.Pizzas" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Orders">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Pizzas">
+              <PropertyRef Name="OrderId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PizzaPizza_Topping">
+          <End Role="Pizzas" Type="Self.Pizzas" Multiplicity="1" />
+          <End Role="Pizza_Topping" Type="Self.Pizza_Topping" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Pizzas">
+              <PropertyRef Name="PizzaId" />
+            </Principal>
+            <Dependent Role="Pizza_Topping">
+              <PropertyRef Name="PizzaPizzaId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_RestarauntBooking">
+          <End Role="Restaraunts" Type="Self.Restaraunts" Multiplicity="1" />
+          <End Role="Bookings" Type="Self.Bookings" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Restaraunts">
+              <PropertyRef Name="RestId" />
+            </Principal>
+            <Dependent Role="Bookings">
+              <PropertyRef Name="RestarauntRestId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ToppingPizza_Topping">
+          <End Role="Toppings" Type="Self.Toppings" Multiplicity="1" />
+          <End Role="Pizza_Topping" Type="Self.Pizza_Topping" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Toppings">
+              <PropertyRef Name="ToppingId" />
+            </Principal>
+            <Dependent Role="Pizza_Topping">
+              <PropertyRef Name="ToppingToppingId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="MariosPizzaModelStoreContainer">
+          <EntitySet Name="Bookings" EntityType="Self.Bookings" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Customers" EntityType="Self.Customers" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Orders" EntityType="Self.Orders" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Pizza_Topping" EntityType="Self.Pizza_Topping" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Pizzas" EntityType="Self.Pizzas" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Restaraunts" EntityType="Self.Restaraunts" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Toppings" EntityType="Self.Toppings" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_CustomerBooking" Association="Self.FK_CustomerBooking">
+            <End Role="Customers" EntitySet="Customers" />
+            <End Role="Bookings" EntitySet="Bookings" />
+          </AssociationSet>
+          <AssociationSet Name="FK_OrderPizza" Association="Self.FK_OrderPizza">
+            <End Role="Orders" EntitySet="Orders" />
+            <End Role="Pizzas" EntitySet="Pizzas" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PizzaPizza_Topping" Association="Self.FK_PizzaPizza_Topping">
+            <End Role="Pizzas" EntitySet="Pizzas" />
+            <End Role="Pizza_Topping" EntitySet="Pizza_Topping" />
+          </AssociationSet>
+          <AssociationSet Name="FK_RestarauntBooking" Association="Self.FK_RestarauntBooking">
+            <End Role="Restaraunts" EntitySet="Restaraunts" />
+            <End Role="Bookings" EntitySet="Bookings" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ToppingPizza_Topping" Association="Self.FK_ToppingPizza_Topping">
+            <End Role="Toppings" EntitySet="Toppings" />
+            <End Role="Pizza_Topping" EntitySet="Pizza_Topping" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema xmlns="http://schemas.microsoft.com/ado/2009/11/edm" xmlns:cg="http://schemas.microsoft.com/ado/2006/04/codegeneration" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" Namespace="MariosPizzaModel" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" annotation:UseStrongSpatialTypes="false">
@@ -114,15 +179,26 @@
             <End Role="Order" EntitySet="Orders" />
             <End Role="Pizza" EntitySet="Pizzas" />
           </AssociationSet>
+          <EntitySet Name="Customers" EntityType="MariosPizzaModel.Customer" />
+          <EntitySet Name="Bookings" EntityType="MariosPizzaModel.Booking" />
+          <EntitySet Name="Restaraunts" EntityType="MariosPizzaModel.Restaraunt" />
+          <AssociationSet Name="RestarauntBooking" Association="MariosPizzaModel.RestarauntBooking">
+            <End Role="Restaraunt" EntitySet="Restaraunts" />
+            <End Role="Booking" EntitySet="Bookings" />
+          </AssociationSet>
+          <AssociationSet Name="CustomerBooking" Association="MariosPizzaModel.CustomerBooking">
+            <End Role="Customer" EntitySet="Customers" />
+            <End Role="Booking" EntitySet="Bookings" />
+          </AssociationSet>
         </EntityContainer>
         <EntityType Name="Pizza">
           <Key>
             <PropertyRef Name="PizzaId" />
           </Key>
           <Property Name="PizzaId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="PizzaName" Type="String" Nullable="false" />
-          <Property Name="PizzaDescription" Type="String" Nullable="false" />
-          <Property Name="PizzaPrice" Type="String" Nullable="false" />
+          <Property Name="PizzaName" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="PizzaDescription" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="PizzaPrice" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
           <NavigationProperty Name="Pizza_Topping" Relationship="MariosPizzaModel.PizzaPizza_Topping" FromRole="Pizza" ToRole="Pizza_Topping" />
           <NavigationProperty Name="Order" Relationship="MariosPizzaModel.OrderPizza" FromRole="Pizza" ToRole="Order" />
           <Property Name="OrderId" Type="Int32" Nullable="false" />
@@ -132,7 +208,7 @@
             <PropertyRef Name="ToppingId" />
           </Key>
           <Property Name="ToppingId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="ToppingName" Type="String" Nullable="false" />
+          <Property Name="ToppingName" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
           <NavigationProperty Name="Pizza_Topping" Relationship="MariosPizzaModel.ToppingPizza_Topping" FromRole="Topping" ToRole="Pizza_Topping" />
         </EntityType>
         <EntityType Name="Pizza_Topping">
@@ -174,9 +250,9 @@
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="OrderTime" Type="String" Nullable="false" />
-          <Property Name="OrderCurrency" Type="String" Nullable="false" />
-          <Property Name="OrderTotal" Type="String" Nullable="false" />
+          <Property Name="OrderTime" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="OrderCurrency" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="OrderTotal" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
           <NavigationProperty Name="Pizzas" Relationship="MariosPizzaModel.OrderPizza" FromRole="Order" ToRole="Pizza" />
         </EntityType>
         <Association Name="OrderPizza">
@@ -188,6 +264,64 @@
             </Principal>
             <Dependent Role="Pizza">
               <PropertyRef Name="OrderId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="Customer">
+          <Key>
+            <PropertyRef Name="CustId" />
+          </Key>
+          <Property Name="CustId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CustFirstName" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="CustLastName" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="CustPhoneNumber" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <NavigationProperty Name="Bookings" Relationship="MariosPizzaModel.CustomerBooking" FromRole="Customer" ToRole="Booking" />
+        </EntityType>
+        <EntityType Name="Booking">
+          <Key>
+            <PropertyRef Name="BookingId" />
+          </Key>
+          <Property Name="BookingId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="BookingGuestNum" Type="Int32" Nullable="false" />
+          <Property Name="BookingDate" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="Restaraunt" Relationship="MariosPizzaModel.RestarauntBooking" FromRole="Booking" ToRole="Restaraunt" />
+          <Property Name="BookingTime" Type="Time" Nullable="false" Precision="7" />
+          <Property Name="RestarauntRestId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Customer" Relationship="MariosPizzaModel.CustomerBooking" FromRole="Booking" ToRole="Customer" />
+          <Property Name="CustomerCustId" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Restaraunt">
+          <Key>
+            <PropertyRef Name="RestId" />
+          </Key>
+          <Property Name="RestId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="RestAddress" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="RestPhone" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="RestOpenTime" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="RestCloseTime" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <NavigationProperty Name="Bookings" Relationship="MariosPizzaModel.RestarauntBooking" FromRole="Restaraunt" ToRole="Booking" />
+        </EntityType>
+        <Association Name="RestarauntBooking">
+          <End Type="MariosPizzaModel.Restaraunt" Role="Restaraunt" Multiplicity="1" />
+          <End Type="MariosPizzaModel.Booking" Role="Booking" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Restaraunt">
+              <PropertyRef Name="RestId" />
+            </Principal>
+            <Dependent Role="Booking">
+              <PropertyRef Name="RestarauntRestId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="CustomerBooking">
+          <End Type="MariosPizzaModel.Customer" Role="Customer" Multiplicity="1" />
+          <End Type="MariosPizzaModel.Booking" Role="Booking" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Customer">
+              <PropertyRef Name="CustId" />
+            </Principal>
+            <Dependent Role="Booking">
+              <PropertyRef Name="CustomerCustId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -235,6 +369,39 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
+    <EntitySetMapping Name="Customers">
+      <EntityTypeMapping TypeName="IsTypeOf(MariosPizzaModel.Customer)">
+        <MappingFragment StoreEntitySet="Customers">
+          <ScalarProperty Name="CustId" ColumnName="CustId" />
+          <ScalarProperty Name="CustFirstName" ColumnName="CustFirstName" />
+          <ScalarProperty Name="CustLastName" ColumnName="CustLastName" />
+          <ScalarProperty Name="CustPhoneNumber" ColumnName="CustPhoneNumber" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Bookings">
+      <EntityTypeMapping TypeName="IsTypeOf(MariosPizzaModel.Booking)">
+        <MappingFragment StoreEntitySet="Bookings">
+          <ScalarProperty Name="BookingId" ColumnName="BookingId" />
+          <ScalarProperty Name="BookingGuestNum" ColumnName="BookingGuestNum" />
+          <ScalarProperty Name="BookingDate" ColumnName="BookingDate" />
+          <ScalarProperty Name="BookingTime" ColumnName="BookingTime" />
+          <ScalarProperty Name="RestarauntRestId" ColumnName="RestarauntRestId" />
+          <ScalarProperty Name="CustomerCustId" ColumnName="CustomerCustId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Restaraunts">
+      <EntityTypeMapping TypeName="IsTypeOf(MariosPizzaModel.Restaraunt)">
+        <MappingFragment StoreEntitySet="Restaraunts">
+          <ScalarProperty Name="RestId" ColumnName="RestId" />
+          <ScalarProperty Name="RestAddress" ColumnName="RestAddress" />
+          <ScalarProperty Name="RestPhone" ColumnName="RestPhone" />
+          <ScalarProperty Name="RestOpenTime" ColumnName="RestOpenTime" />
+          <ScalarProperty Name="RestCloseTime" ColumnName="RestCloseTime" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
   </EntityContainerMapping>
 </Mapping></edmx:Mappings>
   </edmx:Runtime>
@@ -251,6 +418,7 @@
         <DesignerProperty Name="EnablePluralization" Value="True" />
         <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
         <DesignerProperty Name="UseLegacyProvider" Value="False" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="True" />
       </DesignerInfoPropertySet>
     </edmx:Options>
     <!-- Diagram content (shape and connector positions) -->

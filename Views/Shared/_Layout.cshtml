@@ -6,7 +6,6 @@
     <title>Mario's Pizza - @ViewBag.Title</title>
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
-
 </head>
 <body>
     <div class="navbar navbar-inverse navbar-fixed-top">
@@ -21,9 +20,6 @@
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
-                    <li>@Html.ActionLink("Home", "Index", "Home")</li>
-                    <li>@Html.ActionLink("About", "About", "Home")</li>
-                    <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
 
                     @if (User.Identity.IsAuthenticated && HttpContext.Current.User.IsInRole("SuperUser") || HttpContext.Current.User.IsInRole("Administrator"))
                     {
@@ -35,30 +31,35 @@
                     @if (User.Identity.IsAuthenticated && HttpContext.Current.User.IsInRole("SuperUser") || HttpContext.Current.User.IsInRole("Staff Memeber"))
                     {
                         <!-- Staff Member and SuperUser options -->
-                        
+
                     }
 
                     @if (User.Identity.IsAuthenticated && HttpContext.Current.User.IsInRole("SuperUser") || HttpContext.Current.User.IsInRole("Customer"))
                     {
                         <!-- Customer and SuperUser options -->
                         <li>@Html.ActionLink("Create Order", "Index", "Orders")</li>
+                        <li>@Html.ActionLink("Book a table", "Index", "Bookings")</li>
                     }
 
+                    <li>@Html.ActionLink("About", "About", "Home")</li>
+                    <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
                 </ul>
                 @Html.Partial("_LoginPartial")
             </div>
         </div>
     </div>
     <div class="container body-content">
+        <!-- BODY -->
         @RenderBody()
-        <hr />
-        <footer>
-            <p>&copy; @DateTime.Now.Year - Created by Malcolm Malloy 22026320</p>
-        </footer>
+        <!-- END BODY -->
     </div>
+    <footer>
+        <p>&copy; @DateTime.Now.Year - Created by Malcolm Malloy 22026320</p>
+    </footer>
 
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
     @RenderSection("scripts", required: false)
+    @Scripts.Render("~/bundles/custom")
 </body>
 </html>

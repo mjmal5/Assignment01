@@ -12,6 +12,11 @@
         <AssociationConnector Association="MariosPizzaModel.ToppingPizza_Topping" />
         <EntityTypeShape EntityType="MariosPizzaModel.Order" Width="1.5" PointX="3.625" PointY="4.125" />
         <AssociationConnector Association="MariosPizzaModel.OrderPizza" />
+        <EntityTypeShape EntityType="MariosPizzaModel.Customer" Width="1.5" PointX="9.5" PointY="4.125" />
+        <EntityTypeShape EntityType="MariosPizzaModel.Booking" Width="2.875" PointX="6" PointY="4.125" />
+        <EntityTypeShape EntityType="MariosPizzaModel.Restaraunt" Width="1.5" PointX="6" PointY="7" />
+        <AssociationConnector Association="MariosPizzaModel.RestarauntBooking" />
+        <AssociationConnector Association="MariosPizzaModel.CustomerBooking" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
