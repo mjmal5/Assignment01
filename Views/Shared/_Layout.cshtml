@@ -39,10 +39,13 @@
                         <!-- Customer and SuperUser options -->
                         <li>@Html.ActionLink("Create Order", "Index", "Orders")</li>
                         <li>@Html.ActionLink("Book a table", "Index", "Bookings")</li>
+                        <li>@Html.ActionLink("Careers", "Careers", "Home")</li>
+                        <li class="now-hiring-li"><div class="now-hiring-div">Now Hiring!</div></li>
                     }
 
                     <li>@Html.ActionLink("About", "About", "Home")</li>
                     <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
+
                 </ul>
                 @Html.Partial("_LoginPartial")
             </div>
