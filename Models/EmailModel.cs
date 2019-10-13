@@ -28,9 +28,6 @@ namespace FIT5032_Assignment.Models
         [Required(ErrorMessage = "Please enter your cover letter")]
         public string Contents { get; set; }
 
-        //[Display(Name = "Attach your CV")]
-        //public string Attachment { get; set; }
-
         [Display(Name = "Attach your CV")]
         public string Attachment { get; set; }
 

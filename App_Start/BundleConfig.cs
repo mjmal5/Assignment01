@@ -30,7 +30,16 @@ namespace FIT5032_Assignment
                       "~/Content/bootstrap.css",
                       "~/Content/site.css",
                       "~/Content/jquery-ui.css",
-                      "~/Content/style.css"));
+                      "~/Content/style.css",
+                      "~/Content/fullcalendar.min.css"
+                      ));
+
+            bundles.Add(new ScriptBundle("~/bundles/fullcalendar").Include(
+                    //"~/Scripts/lib/jquery.min.js",
+                    "~/Scripts/lib/moment.min.js",
+                    "~/Scripts/fullcalendar.js",
+                    "~/Scripts/calendar.js"
+                    ));
 
         }
     }

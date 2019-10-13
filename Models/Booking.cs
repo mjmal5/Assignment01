@@ -11,19 +11,12 @@ namespace FIT5032_Assignment.Models
 {
     using System;
     using System.Collections.Generic;
-    using System.ComponentModel.DataAnnotations;
-
+    
     public partial class Booking
     {
         public int BookingId { get; set; }
-
-        [Display(Name = "No. of Guests")]
         public int BookingGuestNum { get; set; }
-
-        [Display(Name = "Date")]
         public System.DateTime BookingDate { get; set; }
-
-        [Display(Name = "Time")]
         public System.TimeSpan BookingTime { get; set; }
         public int RestarauntRestId { get; set; }
         public int CustomerCustId { get; set; }

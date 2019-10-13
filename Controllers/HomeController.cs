@@ -61,9 +61,9 @@ namespace FIT5032_Assignment.Controllers
                             Directory.CreateDirectory(path);
                         }
 
-                        if ((strExt != ".txt"))
+                        if ((strExt != ".pdf"))
                         {
-                            ViewBag.Message = "Invalid File Type";
+                            ViewBag.Message = "Invalid File Type (Must be .pdf)";
                         }
                         else
                         {
