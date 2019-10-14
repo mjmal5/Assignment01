@@ -11,7 +11,8 @@ namespace FIT5032_Assignment.Models
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations;
+
     public partial class Restaraunt
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -21,10 +22,12 @@ namespace FIT5032_Assignment.Models
         }
     
         public int RestId { get; set; }
+
+        [Display(Name = "Location")]
         public string RestAddress { get; set; }
+
+        [Display(Name = "Phone Number")]
         public string RestPhone { get; set; }
-        public string RestOpenTime { get; set; }
-        public string RestCloseTime { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Booking> Bookings { get; set; }

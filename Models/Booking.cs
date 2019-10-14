@@ -11,17 +11,27 @@ namespace FIT5032_Assignment.Models
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations;
+
     public partial class Booking
     {
         public int BookingId { get; set; }
+
+        [Display(Name = "Number of Guests")]
         public int BookingGuestNum { get; set; }
+
+        [DataType(DataType.Date)]
+        [Display(Name = "Date")]
+        [DisplayFormat(DataFormatString = "{0:dd/MM/yyyy}", ApplyFormatInEditMode = true)]
         public System.DateTime BookingDate { get; set; }
-        public System.TimeSpan BookingTime { get; set; }
+
+        [Display(Name = "Time")]
+        public string BookingTime { get; set; }
+     
         public int RestarauntRestId { get; set; }
-        public int CustomerCustId { get; set; }
-    
+
+        public string UserId { get; set; }
+
         public virtual Restaraunt Restaraunt { get; set; }
-        public virtual Customer Customer { get; set; }
     }
 }

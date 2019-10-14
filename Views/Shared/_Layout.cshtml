@@ -25,6 +25,7 @@
                     {
                         <!-- Administrator and SuperUser options -->
                         <li>@Html.ActionLink("Events Calendar", "Index", "Events")</li>
+                        <li>@Html.ActionLink("Locations", "Index", "Restaraunts")</li>
                     }
 
                     @if (User.Identity.IsAuthenticated && HttpContext.Current.User.IsInRole("SuperUser") || HttpContext.Current.User.IsInRole("Staff Memeber"))

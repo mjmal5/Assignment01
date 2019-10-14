@@ -19,7 +19,7 @@ namespace FIT5032_Assignment.Controllers
         // GET: Bookings
         public ActionResult Index()
         {
-            var bookings = db.Bookings.Include(b => b.Restaraunt).Include(b => b.Customer);
+            var bookings = db.Bookings.Include(b => b.Restaraunt);
             return View(bookings.ToList());
         }
 
@@ -59,6 +59,9 @@ namespace FIT5032_Assignment.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "BookingId,BookingGuestNum,BookingDate,BookingTime,RestarauntRestId,CustomerCustId")] Booking booking)
         {
+
+            booking.UserId = User.Identity.GetUserId();
+
             if (ModelState.IsValid)
             {
                 db.Bookings.Add(booking);
@@ -67,7 +70,6 @@ namespace FIT5032_Assignment.Controllers
             }
 
             ViewBag.RestarauntRestId = new SelectList(db.Restaraunts, "RestId", "RestAddress", booking.RestarauntRestId);
-            ViewBag.CustomerCustId = new SelectList(db.Customers, "CustId", "CustFirstName", booking.CustomerCustId);
             return View(booking);
         }
 
@@ -84,7 +86,6 @@ namespace FIT5032_Assignment.Controllers
                 return HttpNotFound();
             }
             ViewBag.RestarauntRestId = new SelectList(db.Restaraunts, "RestId", "RestAddress", booking.RestarauntRestId);
-            ViewBag.CustomerCustId = new SelectList(db.Customers, "CustId", "CustFirstName", booking.CustomerCustId);
             return View(booking);
         }
 
@@ -102,7 +103,6 @@ namespace FIT5032_Assignment.Controllers
                 return RedirectToAction("Index");
             }
             ViewBag.RestarauntRestId = new SelectList(db.Restaraunts, "RestId", "RestAddress", booking.RestarauntRestId);
-            ViewBag.CustomerCustId = new SelectList(db.Customers, "CustId", "CustFirstName", booking.CustomerCustId);
             return View(booking);
         }
 

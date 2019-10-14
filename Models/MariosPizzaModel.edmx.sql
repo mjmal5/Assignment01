@@ -2,7 +2,7 @@
 -- --------------------------------------------------
 -- Entity Designer DDL Script for SQL Server 2005, 2008, 2012 and Azure
 -- --------------------------------------------------
--- Date Created: 10/13/2019 04:00:14
+-- Date Created: 10/14/2019 23:18:44
 -- Generated from EDMX file: C:\Users\Malcolm\source\repos\FIT5032_Assignment\Models\MariosPizzaModel.edmx
 -- --------------------------------------------------
 
@@ -19,9 +19,6 @@ GO
 
 IF OBJECT_ID(N'[dbo].[FK_RestarauntBooking]', 'F') IS NOT NULL
     ALTER TABLE [dbo].[Bookings] DROP CONSTRAINT [FK_RestarauntBooking];
-GO
-IF OBJECT_ID(N'[dbo].[FK_CustomerBooking]', 'F') IS NOT NULL
-    ALTER TABLE [dbo].[Bookings] DROP CONSTRAINT [FK_CustomerBooking];
 GO
 
 -- --------------------------------------------------
@@ -59,9 +56,9 @@ CREATE TABLE [dbo].[Bookings] (
     [BookingId] int IDENTITY(1,1) NOT NULL,
     [BookingGuestNum] int  NOT NULL,
     [BookingDate] datetime  NOT NULL,
-    [BookingTime] time  NOT NULL,
+    [BookingTime] nvarchar(max)  NOT NULL,
     [RestarauntRestId] int  NOT NULL,
-    [CustomerCustId] int  NOT NULL
+    [UserId] nvarchar(max)  NOT NULL
 );
 GO
 
@@ -69,9 +66,7 @@ GO
 CREATE TABLE [dbo].[Restaraunts] (
     [RestId] int IDENTITY(1,1) NOT NULL,
     [RestAddress] nvarchar(max)  NOT NULL,
-    [RestPhone] nvarchar(max)  NOT NULL,
-    [RestOpenTime] nvarchar(max)  NOT NULL,
-    [RestCloseTime] nvarchar(max)  NOT NULL
+    [RestPhone] nvarchar(max)  NOT NULL
 );
 GO
 
@@ -128,21 +123,6 @@ GO
 CREATE INDEX [IX_FK_RestarauntBooking]
 ON [dbo].[Bookings]
     ([RestarauntRestId]);
-GO
-
--- Creating foreign key on [CustomerCustId] in table 'Bookings'
-ALTER TABLE [dbo].[Bookings]
-ADD CONSTRAINT [FK_CustomerBooking]
-    FOREIGN KEY ([CustomerCustId])
-    REFERENCES [dbo].[Customers]
-        ([CustId])
-    ON DELETE NO ACTION ON UPDATE NO ACTION;
-GO
-
--- Creating non-clustered index for FOREIGN KEY 'FK_CustomerBooking'
-CREATE INDEX [IX_FK_CustomerBooking]
-ON [dbo].[Bookings]
-    ([CustomerCustId]);
 GO
 
 -- --------------------------------------------------

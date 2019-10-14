@@ -14,10 +14,6 @@
       <End Role="Restaraunt" EntitySet="Restaraunts" />
       <End Role="Booking" EntitySet="Bookings" />
     </AssociationSet>
-    <AssociationSet Name="CustomerBooking" Association="MariosPizzaModel.Store.CustomerBooking">
-      <End Role="Customer" EntitySet="Customers" />
-      <End Role="Booking" EntitySet="Bookings" />
-    </AssociationSet>
   </EntityContainer>
   <EntityType Name="Customers">
     <Key>
@@ -35,9 +31,9 @@
     <Property Name="BookingId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="BookingGuestNum" Type="int" Nullable="false" />
     <Property Name="BookingDate" Type="datetime" Nullable="false" />
-    <Property Name="BookingTime" Type="time" Nullable="false" Precision="7" />
+    <Property Name="BookingTime" Type="nvarchar(max)" Nullable="false" />
     <Property Name="RestarauntRestId" Type="int" Nullable="false" />
-    <Property Name="CustomerCustId" Type="int" Nullable="false" />
+    <Property Name="UserId" Type="nvarchar(max)" Nullable="false" />
   </EntityType>
   <EntityType Name="Restaraunts">
     <Key>
@@ -46,8 +42,6 @@
     <Property Name="RestId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="RestAddress" Type="nvarchar(max)" Nullable="false" />
     <Property Name="RestPhone" Type="nvarchar(max)" Nullable="false" />
-    <Property Name="RestOpenTime" Type="nvarchar(max)" Nullable="false" />
-    <Property Name="RestCloseTime" Type="nvarchar(max)" Nullable="false" />
   </EntityType>
   <EntityType Name="Events">
     <Key>
@@ -69,18 +63,6 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="CustomerBooking">
-    <End Role="Customer" Type="MariosPizzaModel.Store.Customers" Multiplicity="1" />
-    <End Role="Booking" Type="MariosPizzaModel.Store.Bookings" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Customer">
-        <PropertyRef Name="CustId" />
-      </Principal>
-      <Dependent Role="Booking">
-        <PropertyRef Name="CustomerCustId" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
 </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
@@ -93,10 +75,6 @@
             <End Role="Restaraunt" EntitySet="Restaraunts" />
             <End Role="Booking" EntitySet="Bookings" />
           </AssociationSet>
-          <AssociationSet Name="CustomerBooking" Association="MariosPizzaModel.CustomerBooking">
-            <End Role="Customer" EntitySet="Customers" />
-            <End Role="Booking" EntitySet="Bookings" />
-          </AssociationSet>
           <EntitySet Name="Events" EntityType="MariosPizzaModel.Event" />
         </EntityContainer>
         <EntityType Name="Customer">
@@ -107,7 +85,6 @@
           <Property Name="CustFirstName" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
           <Property Name="CustLastName" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
           <Property Name="CustPhoneNumber" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
-          <NavigationProperty Name="Bookings" Relationship="MariosPizzaModel.CustomerBooking" FromRole="Customer" ToRole="Booking" />
         </EntityType>
         <EntityType Name="Booking">
           <Key>
@@ -117,10 +94,9 @@
           <Property Name="BookingGuestNum" Type="Int32" Nullable="false" />
           <Property Name="BookingDate" Type="DateTime" Nullable="false" Precision="3" />
           <NavigationProperty Name="Restaraunt" Relationship="MariosPizzaModel.RestarauntBooking" FromRole="Booking" ToRole="Restaraunt" />
-          <Property Name="BookingTime" Type="Time" Nullable="false" Precision="7" />
+          <Property Name="BookingTime" Type="String" Nullable="false" />
           <Property Name="RestarauntRestId" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="Customer" Relationship="MariosPizzaModel.CustomerBooking" FromRole="Booking" ToRole="Customer" />
-          <Property Name="CustomerCustId" Type="Int32" Nullable="false" />
+          <Property Name="UserId" Type="String" Nullable="false" />
         </EntityType>
         <EntityType Name="Restaraunt">
           <Key>
@@ -129,8 +105,6 @@
           <Property Name="RestId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="RestAddress" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
           <Property Name="RestPhone" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
-          <Property Name="RestOpenTime" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
-          <Property Name="RestCloseTime" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
           <NavigationProperty Name="Bookings" Relationship="MariosPizzaModel.RestarauntBooking" FromRole="Restaraunt" ToRole="Booking" />
         </EntityType>
         <Association Name="RestarauntBooking">
@@ -142,18 +116,6 @@
             </Principal>
             <Dependent Role="Booking">
               <PropertyRef Name="RestarauntRestId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="CustomerBooking">
-          <End Type="MariosPizzaModel.Customer" Role="Customer" Multiplicity="1" />
-          <End Type="MariosPizzaModel.Booking" Role="Booking" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Customer">
-              <PropertyRef Name="CustId" />
-            </Principal>
-            <Dependent Role="Booking">
-              <PropertyRef Name="CustomerCustId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -189,7 +151,7 @@
           <ScalarProperty Name="BookingDate" ColumnName="BookingDate" />
           <ScalarProperty Name="BookingTime" ColumnName="BookingTime" />
           <ScalarProperty Name="RestarauntRestId" ColumnName="RestarauntRestId" />
-          <ScalarProperty Name="CustomerCustId" ColumnName="CustomerCustId" />
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -199,8 +161,6 @@
           <ScalarProperty Name="RestId" ColumnName="RestId" />
           <ScalarProperty Name="RestAddress" ColumnName="RestAddress" />
           <ScalarProperty Name="RestPhone" ColumnName="RestPhone" />
-          <ScalarProperty Name="RestOpenTime" ColumnName="RestOpenTime" />
-          <ScalarProperty Name="RestCloseTime" ColumnName="RestCloseTime" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
