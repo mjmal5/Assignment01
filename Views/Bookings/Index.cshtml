@@ -5,46 +5,56 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.BookingGuestNum)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.BookingDate)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.BookingTime)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Restaraunt.RestAddress)
-        </th>
-        <th></th>
-    </tr>
+<div class="row content-padding">
+    <div class="col-sm-6">
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.BookingGuestNum)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.BookingDate)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.BookingTime)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Restaraunt.RestAddress)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.BookingId }) |
-            @Html.ActionLink("Details", "Details", new { id=item.BookingId }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.BookingId })
-        </td>
-    </tr>
-}
+        <h2>Your Bookings</h2>
+        <br />
 
-</table>
+        <table class="table">
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.BookingDate)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.BookingTime)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.BookingGuestNum)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Restaurant.RestAddress)
+                </th>
+                <th></th>
+            </tr>
+
+            @foreach (var item in Model)
+            {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.BookingDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.BookingTime)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.BookingGuestNum)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Restaurant.RestAddress)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.BookingId }) |
+                @Html.ActionLink("Details", "Details", new { id = item.BookingId }) |
+                @Html.ActionLink("Cancel", "Delete", new { id = item.BookingId })
+            </td>
+        </tr>
+            }
+
+        </table>
+        <div class="btn-align-right">
+                @Html.ActionLink("Make a Booking", "Create", null, null, new { @class = "btn-style" })
+        </div>
+    </div>
+    <div class="col-sm-6"></div>
+</div>

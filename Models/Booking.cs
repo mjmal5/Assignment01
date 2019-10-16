@@ -17,21 +17,24 @@ namespace FIT5032_Assignment.Models
     {
         public int BookingId { get; set; }
 
-        [Display(Name = "Number of Guests")]
+        [Display(Name = "No. of Guests")]
         public int BookingGuestNum { get; set; }
 
-        [DataType(DataType.Date)]
+        
         [Display(Name = "Date")]
         [DisplayFormat(DataFormatString = "{0:dd/MM/yyyy}", ApplyFormatInEditMode = true)]
+        [DataType(DataType.Date)]
         public System.DateTime BookingDate { get; set; }
 
         [Display(Name = "Time")]
+        [StringLength(7)]
         public string BookingTime { get; set; }
-     
-        public int RestarauntRestId { get; set; }
+
+        [Display(Name = "Location")]
+        public int RestaurantRestId { get; set; }
 
         public string UserId { get; set; }
 
-        public virtual Restaraunt Restaraunt { get; set; }
+        public virtual Restaurant Restaurant { get; set; }
     }
 }

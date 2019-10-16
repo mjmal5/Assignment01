@@ -27,7 +27,7 @@ namespace FIT5032_Assignment.Models
     
         public virtual DbSet<Customer> Customers { get; set; }
         public virtual DbSet<Booking> Bookings { get; set; }
-        public virtual DbSet<Restaraunt> Restaraunts { get; set; }
+        public virtual DbSet<Restaurant> Restaurants { get; set; }
         public virtual DbSet<Event> Events { get; set; }
     }
 }

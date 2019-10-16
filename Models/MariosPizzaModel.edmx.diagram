@@ -7,8 +7,8 @@
       <Diagram DiagramId="4b11ac9d1ff94fdeb139e9f20f804408" Name="Diagram1" >
         <EntityTypeShape EntityType="MariosPizzaModel.Customer" Width="1.5" PointX="9.5" PointY="4.125" />
         <EntityTypeShape EntityType="MariosPizzaModel.Booking" Width="2.875" PointX="6" PointY="4.125" />
-        <EntityTypeShape EntityType="MariosPizzaModel.Restaraunt" Width="1.5" PointX="6" PointY="7" />
-        <AssociationConnector Association="MariosPizzaModel.RestarauntBooking" />
+        <EntityTypeShape EntityType="MariosPizzaModel.Restaurant" Width="1.5" PointX="6" PointY="7" />
+        <AssociationConnector Association="MariosPizzaModel.RestaurantBooking" />
         <EntityTypeShape EntityType="MariosPizzaModel.Event" Width="3.5" PointX="1.75" PointY="3" />
       </Diagram>
     </edmx:Diagrams>

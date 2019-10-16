@@ -5,25 +5,29 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Contact Us</h2>
+<div class="row content-padding">
+    <div class="col-sm-6">
+        <h2>Contact Us</h2>
 
-<br />
-<h3>Address</h3>
-<address>
-    32 Luigi Lane<br />
-    Bowserville, VIC 3020<br />
-    <abbr title="Phone">P:</abbr>
-    04 1234 4321
-</address>
+        <br />
+        <h3>Address</h3>
+        <address>
+            32 Luigi Lane<br />
+            Bowserville, VIC 3020<br />
+            <abbr title="Phone">P:</abbr>
+            04 1234 4321
+        </address>
 
-<div>
-    @Html.ActionLink("Back to Home", "Index")
+        <div class="btn-align-right">
+            @Html.ActionLink("Back to Home", "Index", null, null, new { @class = "btn-style" })
+        </div>
+
+        @section Scripts {
+            @Scripts.Render("~/bundles/jqueryval")
+        }
+    </div>
+    <div class="col-sm-6"></div>
 </div>
-
-@section Scripts {
-    @Scripts.Render("~/bundles/jqueryval")
-}
-
 
 
 

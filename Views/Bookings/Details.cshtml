@@ -5,47 +5,52 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Details</h2>
+<div class="row content-padding">
+    <div class="col-sm-6">
+        <h2>Booking Details</h2>
+        <br />
 
-<div>
-    <h4>Booking</h4>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.BookingGuestNum)
-        </dt>
+        <div>
+            <dl class="dl-horizontal">
 
-        <dd>
-            @Html.DisplayFor(model => model.BookingGuestNum)
-        </dd>
+                <dt>
+                    @Html.DisplayNameFor(model => model.BookingDate)
+                </dt>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.BookingDate)
-        </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.BookingDate)
+                </dd>
 
-        <dd>
-            @Html.DisplayFor(model => model.BookingDate)
-        </dd>
+                <dt>
+                    @Html.DisplayNameFor(model => model.BookingTime)
+                </dt>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.BookingTime)
-        </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.BookingTime)
+                </dd>
 
-        <dd>
-            @Html.DisplayFor(model => model.BookingTime)
-        </dd>
+                <dt>
+                    @Html.DisplayNameFor(model => model.BookingGuestNum)
+                </dt>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Restaraunt.RestAddress)
-        </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.BookingGuestNum)
+                </dd>
 
-        <dd>
-            @Html.DisplayFor(model => model.Restaraunt.RestAddress)
-        </dd>
+                <dt>
+                    @Html.DisplayNameFor(model => model.Restaurant.RestAddress)
+                </dt>
 
-    </dl>
+                <dd>
+                    @Html.DisplayFor(model => model.Restaurant.RestAddress)
+                </dd>
+
+            </dl>
+        </div>
+        <div class="btn-align-right col-md-2">
+            @Html.ActionLink("Back to List", "Index", null, null, new { @class = "btn-style " })
+            @Html.ActionLink("Edit", "Edit", new { id = Model.BookingId }, new { @class = "btn-style " })
+        </div>
+    </div>
+    <div class="col-sm-6"></div>
 </div>
-<p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.BookingId }) |
-    @Html.ActionLink("Back to List", "Index")
-</p>

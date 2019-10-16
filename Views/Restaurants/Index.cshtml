@@ -1,0 +1,48 @@
+﻿@model IEnumerable<FIT5032_Assignment.Models.Restaurant>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="row content-padding">
+    <div class="col-sm-6">
+        <h2>Restaurant Locations</h2>
+        <br />
+
+        <table class="table">
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.RestAddress)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.RestPhone)
+                </th>
+                <th></th>
+            </tr>
+
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.RestAddress)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.RestPhone)
+                    </td>
+                    <td>
+                        @Html.ActionLink("Edit", "Edit", new { id = item.RestId }) |
+                        @Html.ActionLink("Details", "Details", new { id = item.RestId }) |
+                        @Html.ActionLink("Delete", "Delete", new { id = item.RestId })
+                    </td>
+                </tr>
+            }
+
+        </table>
+
+        <div class="btn-align-right">
+            @Html.ActionLink("Add a Restaurant", "Create", null, null, new { @class = "btn-style" })
+        </div>
+    </div>
+    <div class="col-sm-6"></div>
+</div>
