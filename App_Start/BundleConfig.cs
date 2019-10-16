@@ -26,6 +26,13 @@ namespace FIT5032_Assignment
             bundles.Add(new ScriptBundle("~/bundles/custom").Include(
                       "~/Scripts/main.js"));
 
+            bundles.Add(new ScriptBundle("~/bundles/fullcalendar").Include(
+                    //"~/Scripts/lib/jquery.min.js",
+                    "~/Scripts/lib/moment.min.js",
+                    "~/Scripts/fullcalendar.js",
+                    "~/Scripts/calendar.js"
+                    ));
+
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/bootstrap.css",
                       "~/Content/site.css",
@@ -34,12 +41,7 @@ namespace FIT5032_Assignment
                       "~/Content/fullcalendar.min.css"
                       ));
 
-            bundles.Add(new ScriptBundle("~/bundles/fullcalendar").Include(
-                    //"~/Scripts/lib/jquery.min.js",
-                    "~/Scripts/lib/moment.min.js",
-                    "~/Scripts/fullcalendar.js",
-                    "~/Scripts/calendar.js"
-                    ));
+
 
         }
     }
