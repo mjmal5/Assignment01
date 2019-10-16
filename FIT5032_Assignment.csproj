@@ -251,6 +251,10 @@
     <Compile Include="Utils\EmailSender.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="App_Data\aspnet-FIT5032_Assignment-114154f0-75bc-4028-922a-36da627df766.mdf" />
+    <Content Include="App_Data\aspnet-FIT5032_Assignment-114154f0-75bc-4028-922a-36da627df766_log.ldf">
+      <DependentUpon>aspnet-FIT5032_Assignment-114154f0-75bc-4028-922a-36da627df766.mdf</DependentUpon>
+    </Content>
     <Content Include="App_Data\Marios_Pizza.mdf" />
     <Content Include="App_Data\Marios_Pizza_log.ldf">
       <DependentUpon>Marios_Pizza.mdf</DependentUpon>

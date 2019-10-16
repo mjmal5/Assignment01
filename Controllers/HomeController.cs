@@ -10,6 +10,7 @@ using System.IO;
 
 namespace FIT5032_Assignment.Controllers
 {
+    [RequireHttps]
     public class HomeController : Controller
     {
         public ActionResult Index()
