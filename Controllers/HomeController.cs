@@ -20,21 +20,25 @@ namespace FIT5032_Assignment.Controllers
             return View();
         }
 
-        // GET: Locations
+        public ActionResult Admin()
+        {
+            return View();
+        }
+
         public ActionResult Finder()
         {
             return View(db.Locations.ToList());
+        }
+
+        public ActionResult PizzaRatings()
+        {
+            return View();
         }
 
         public ActionResult About()
         {
             ViewBag.Message = "Your application description page.";
 
-            return View();
-        }
-
-        public ActionResult Contact()
-        {
             return View();
         }
 

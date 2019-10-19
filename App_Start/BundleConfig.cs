@@ -33,6 +33,11 @@ namespace FIT5032_Assignment
                     "~/Scripts/calendar.js"
                     ));
 
+            bundles.Add(new ScriptBundle("~/bundles/canvas").Include(
+                    "~/Scripts/jquery.canvasjs.min.js"
+                    ));
+            
+
             bundles.Add(new ScriptBundle("~/bundles/mapbox").Include(
             "~/Scripts/location.js"));
 
