@@ -1,0 +1,40 @@
+﻿@model IEnumerable<FIT5032_Assignment.Models.Location>
+
+@{
+    ViewBag.Title = "Finder";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="row content-padding">
+    <div class="col-sm-6">
+        <h2>Restaurant Finder</h2>
+
+        <div id="map" style="height:300px"></div>
+
+        <table class="table" style="display:none;">
+
+            @foreach (var item in Model)
+            {
+                <tr class="coordinates">
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Name)
+                    </td>
+                    <td class="description">
+                        @Html.DisplayFor(modelItem => item.Description)
+                    </td>
+                    <td class="latitude">
+                        @Html.DisplayFor(modelItem => item.Latitude)
+                    </td>
+                    <td class="longitude">
+                        @Html.DisplayFor(modelItem => item.Longitude)
+                    </td>
+                </tr>
+            }
+
+        </table>
+        @section Scripts {
+            @Scripts.Render("~/bundles/mapbox")
+        }
+    </div>
+    <div class="col-sm-6"></div>
+</div>

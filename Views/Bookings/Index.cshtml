@@ -24,7 +24,7 @@
                         @Html.DisplayNameFor(model => model.BookingGuestNum)
                     </th>
                     <th>
-                        @Html.DisplayNameFor(model => model.Restaurant.RestAddress)
+                        @Html.DisplayNameFor(model => model.Location.Name)
                     </th>
                     <th></th>
                 </tr>
@@ -43,7 +43,7 @@
                             @Html.DisplayFor(modelItem => item.BookingGuestNum)
                         </td>
                         <td>
-                            @Html.DisplayFor(modelItem => item.Restaurant.RestAddress)
+                            @Html.DisplayFor(modelItem => item.Location.Name)
                         </td>
                         <td>
                             @Html.ActionLink("Edit", "Edit", new { id = item.BookingId }) |

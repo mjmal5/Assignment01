@@ -3,10 +3,10 @@
   <EntityContainer Name="MariosPizzaModelStoreContainer">
     <EntitySet Name="Customers" EntityType="MariosPizzaModel.Store.Customers" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="Bookings" EntityType="MariosPizzaModel.Store.Bookings" store:Type="Tables" Schema="dbo" />
-    <EntitySet Name="Restaurants" EntityType="MariosPizzaModel.Store.Restaurants" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Locations" EntityType="MariosPizzaModel.Store.Locations" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="Events" EntityType="MariosPizzaModel.Store.Events" store:Type="Tables" Schema="dbo" />
-    <AssociationSet Name="RestaurantBooking" Association="MariosPizzaModel.Store.RestaurantBooking">
-      <End Role="Restaurant" EntitySet="Restaurants" />
+    <AssociationSet Name="LocationBooking" Association="MariosPizzaModel.Store.LocationBooking">
+      <End Role="Location" EntitySet="Locations" />
       <End Role="Booking" EntitySet="Bookings" />
     </AssociationSet>
   </EntityContainer>
@@ -27,16 +27,18 @@
     <Property Name="BookingGuestNum" Type="int" Nullable="false" />
     <Property Name="BookingDate" Type="datetime" Nullable="false" />
     <Property Name="BookingTime" Type="nvarchar(max)" Nullable="false" />
-    <Property Name="RestaurantRestId" Type="int" Nullable="false" />
+    <Property Name="LocationId" Type="int" Nullable="false" />
     <Property Name="UserId" Type="nvarchar(max)" Nullable="false" />
   </EntityType>
-  <EntityType Name="Restaurants">
+  <EntityType Name="Locations">
     <Key>
-      <PropertyRef Name="RestId" />
+      <PropertyRef Name="LocationId" />
     </Key>
-    <Property Name="RestId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="RestAddress" Type="nvarchar(max)" Nullable="false" />
-    <Property Name="RestPhone" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="LocationId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Description" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Latitude" Type="decimal" Nullable="false" Precision="10" Scale="8" />
+    <Property Name="Longitude" Type="decimal" Nullable="false" Precision="11" Scale="8" />
   </EntityType>
   <EntityType Name="Events">
     <Key>
@@ -46,15 +48,17 @@
     <Property Name="Title" Type="nvarchar(max)" Nullable="false" />
     <Property Name="Start" Type="datetime" Nullable="false" />
   </EntityType>
-  <Association Name="RestaurantBooking">
-    <End Role="Restaurant" Type="MariosPizzaModel.Store.Restaurants" Multiplicity="1" />
+  <Association Name="LocationBooking">
+    <End Role="Location" Type="MariosPizzaModel.Store.Locations" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
     <End Role="Booking" Type="MariosPizzaModel.Store.Bookings" Multiplicity="*" />
     <ReferentialConstraint>
-      <Principal Role="Restaurant">
-        <PropertyRef Name="RestId" />
+      <Principal Role="Location">
+        <PropertyRef Name="LocationId" />
       </Principal>
       <Dependent Role="Booking">
-        <PropertyRef Name="RestaurantRestId" />
+        <PropertyRef Name="LocationId" />
       </Dependent>
     </ReferentialConstraint>
   </Association>

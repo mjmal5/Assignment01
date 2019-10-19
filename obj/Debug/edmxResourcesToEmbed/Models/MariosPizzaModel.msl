@@ -18,17 +18,19 @@
           <ScalarProperty Name="BookingGuestNum" ColumnName="BookingGuestNum" />
           <ScalarProperty Name="BookingDate" ColumnName="BookingDate" />
           <ScalarProperty Name="BookingTime" ColumnName="BookingTime" />
-          <ScalarProperty Name="RestaurantRestId" ColumnName="RestaurantRestId" />
+          <ScalarProperty Name="LocationId" ColumnName="LocationId" />
           <ScalarProperty Name="UserId" ColumnName="UserId" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="Restaurants">
-      <EntityTypeMapping TypeName="IsTypeOf(MariosPizzaModel.Restaurant)">
-        <MappingFragment StoreEntitySet="Restaurants">
-          <ScalarProperty Name="RestId" ColumnName="RestId" />
-          <ScalarProperty Name="RestAddress" ColumnName="RestAddress" />
-          <ScalarProperty Name="RestPhone" ColumnName="RestPhone" />
+    <EntitySetMapping Name="Locations">
+      <EntityTypeMapping TypeName="IsTypeOf(MariosPizzaModel.Location)">
+        <MappingFragment StoreEntitySet="Locations">
+          <ScalarProperty Name="LocationId" ColumnName="LocationId" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="Latitude" ColumnName="Latitude" />
+          <ScalarProperty Name="Longitude" ColumnName="Longitude" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

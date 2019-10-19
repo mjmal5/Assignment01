@@ -19,7 +19,7 @@ namespace FIT5032_Assignment.Controllers
         // GET: Bookings
         public ActionResult Index()
         {
-            var bookings = db.Bookings.Include(b => b.Restaurant);
+            var bookings = db.Bookings.Include(b => b.Location);
             return View(bookings.ToList());
         }
 
@@ -47,7 +47,7 @@ namespace FIT5032_Assignment.Controllers
             //return View(db.Bookings.Where(m => m.AuthorId ==
             //currentUserId).ToList());
 
-            ViewBag.RestaurantRestId = new SelectList(db.Restaurants, "RestId", "RestAddress");
+            ViewBag.LocationId = new SelectList(db.Locations, "LocationId", "Name");
             ViewBag.CustomerCustId = new SelectList(db.Customers, "CustId", "CustFirstName");
             return View();
         }
@@ -57,7 +57,7 @@ namespace FIT5032_Assignment.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "BookingId,BookingGuestNum,BookingDate,BookingTime,RestaurantRestId,CustomerCustId")] Booking booking)
+        public ActionResult Create([Bind(Include = "BookingId,BookingGuestNum,BookingDate,BookingTime,LocationId,CustomerCustId")] Booking booking)
         {
 
             booking.UserId = User.Identity.GetUserId();
@@ -69,7 +69,7 @@ namespace FIT5032_Assignment.Controllers
                 return RedirectToAction("Index");
             }
 
-            ViewBag.RestaurantRestId = new SelectList(db.Restaurants, "RestId", "RestAddress", booking.RestaurantRestId);
+            ViewBag.LocationId = new SelectList(db.Locations, "LocationId", "Name", booking.LocationId);
             return View(booking);
         }
 
@@ -85,7 +85,7 @@ namespace FIT5032_Assignment.Controllers
             {
                 return HttpNotFound();
             }
-            ViewBag.RestaurantRestId = new SelectList(db.Restaurants, "RestId", "RestAddress", booking.RestaurantRestId);
+            ViewBag.LocationId = new SelectList(db.Locations, "LocationId", "Name", booking.LocationId);
             return View(booking);
         }
 
@@ -94,7 +94,7 @@ namespace FIT5032_Assignment.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "BookingId,BookingGuestNum,BookingDate,BookingTime,RestaurantRestId,CustomerCustId")] Booking booking)
+        public ActionResult Edit([Bind(Include = "BookingId,BookingGuestNum,BookingDate,BookingTime,LocationId,CustomerCustId")] Booking booking)
         {
             if (ModelState.IsValid)
             {
@@ -102,7 +102,7 @@ namespace FIT5032_Assignment.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            ViewBag.RestaurantRestId = new SelectList(db.Restaurants, "RestId", "RestAddress", booking.RestaurantRestId);
+            ViewBag.LocationId = new SelectList(db.Locations, "LocationId", "Name", booking.LocationId);
             return View(booking);
         }
 

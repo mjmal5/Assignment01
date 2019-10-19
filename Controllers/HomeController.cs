@@ -13,9 +13,17 @@ namespace FIT5032_Assignment.Controllers
     [RequireHttps]
     public class HomeController : Controller
     {
+        private MariosPizzaModelContainer db = new MariosPizzaModelContainer();
+
         public ActionResult Index()
         {
             return View();
+        }
+
+        // GET: Locations
+        public ActionResult Finder()
+        {
+            return View(db.Locations.ToList());
         }
 
         public ActionResult About()

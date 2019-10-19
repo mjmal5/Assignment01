@@ -6,6 +6,16 @@
     <title>Mario's Pizza - @ViewBag.Title</title>
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
+
+    @* This is for the mapbox map. *@
+    <script src='https://api.mapbox.com/mapbox-gl-js/v0.47.0/mapbox-gl.js'></script>
+    <link href='https://api.mapbox.com/mapbox-gl-js/v0.47.0/mapbox-gl.css' rel='stylesheet' />
+    @*This is used for the Geocoding Mapbox API*@
+    <script src='https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v2.2.0/mapbox-glgeocoder.
+min.js'></script>
+    <link rel='stylesheet' href='https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-glgeocoder/
+v2.2.0/mapbox-gl-geocoder.css' type='text/css' />
+
 </head>
 <body>
     <div class="navbar navbar-inverse navbar-fixed-top">
@@ -25,7 +35,7 @@
                     {
                         <!-- Administrator and SuperUser options -->
                         <li>@Html.ActionLink("Events Calendar", "Index", "Events")</li>
-                        <li>@Html.ActionLink("Locations", "Index", "Restaurants")</li>
+                        <li>@Html.ActionLink("Locations", "Index", "Locations")</li>
                     }
 
                     @if (User.Identity.IsAuthenticated && HttpContext.Current.User.IsInRole("SuperUser") || HttpContext.Current.User.IsInRole("Staff Memeber"))
@@ -40,6 +50,7 @@
                         <li>@Html.ActionLink("Book a table", "Index", "Bookings")</li>
                         <li>@Html.ActionLink("Careers", "Careers", "Home")</li>
                         <li class="now-hiring-li"><div class="now-hiring-div">Now Hiring!</div></li>
+                        <li>@Html.ActionLink("Restaurant Finder", "Finder", "Home")</li>
                     }
 
                     <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
