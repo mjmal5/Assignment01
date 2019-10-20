@@ -1,0 +1,1 @@
+﻿$("#BookingDate").datepicker({ beforeShowDay: $.datepicker.noWeekends })

@@ -9,6 +9,12 @@
       <End Role="Location" EntitySet="Locations" />
       <End Role="Booking" EntitySet="Bookings" />
     </AssociationSet>
+    <EntitySet Name="Pizzas" EntityType="MariosPizzaModel.Pizza" />
+    <EntitySet Name="PizzaRatings" EntityType="MariosPizzaModel.PizzaRating" />
+    <AssociationSet Name="PizzaPizzaRating" Association="MariosPizzaModel.PizzaPizzaRating">
+      <End Role="Pizza" EntitySet="Pizzas" />
+      <End Role="PizzaRating" EntitySet="PizzaRatings" />
+    </AssociationSet>
   </EntityContainer>
   <EntityType Name="Customer">
     <Key>
@@ -61,6 +67,37 @@
       </Principal>
       <Dependent Role="Booking">
         <PropertyRef Name="LocationId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="Pizza">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" Nullable="false" />
+    <NavigationProperty Name="PizzaRatings" Relationship="MariosPizzaModel.PizzaPizzaRating" FromRole="Pizza" ToRole="PizzaRating" />
+    <Property Name="Description" Type="String" Nullable="false" />
+  </EntityType>
+  <EntityType Name="PizzaRating">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Rating" Type="Int16" Nullable="false" />
+    <Property Name="UserId" Type="String" Nullable="false" />
+    <NavigationProperty Name="Pizza" Relationship="MariosPizzaModel.PizzaPizzaRating" FromRole="PizzaRating" ToRole="Pizza" />
+    <Property Name="PizzaId" Type="Int32" Nullable="false" />
+  </EntityType>
+  <Association Name="PizzaPizzaRating">
+    <End Type="MariosPizzaModel.Pizza" Role="Pizza" Multiplicity="1" />
+    <End Type="MariosPizzaModel.PizzaRating" Role="PizzaRating" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Pizza">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="PizzaRating">
+        <PropertyRef Name="PizzaId" />
       </Dependent>
     </ReferentialConstraint>
   </Association>

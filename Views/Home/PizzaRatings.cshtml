@@ -1,65 +1,15 @@
-﻿@*@model IEnumerable<FIT5032_Assignment.Models.Booking>*@
-
-@{
+﻿@{
     ViewBag.Title = "PizzaRatings";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-    <h2>Pizza Ratings</h2>
+<h2>Pizza Ratings</h2>
 
-
-    <style>
-        .ui-tabs-anchor {
-            outline: none;
-        }
-    </style>
-
-    <script>
-        window.onload = function () {
-            var options1 = {
-                animationEnabled: true,
-                title: {
-                    text: "Pizza Ratings"
-                },
-                axisX: {
-                    labelFontSize: 14
-                },
-                axisY: {
-                    maximum: 5,
-                    labelFontSize: 14
-                },
-                data: [{
-                    type: "column", //change it to line, area, bar, pie, etc
-                    dataPoints: [
-                        { label: "Pizza 1", y: 1 },
-                        { label: "Pizza 2", y: 2 },
-                        { label: "Pizza 3", y: 5 },
-                        { label: "Pizza 4", y: 3 },
-                        { label: "Pizza 5", y: 5 }
-                    ]
-                }]
-            };
-
-
-            $("#tabs").tabs({
-                create: function (event, ui) {
-                    //Render Charts after tabs have been created.
-                    $("#chartContainer1").CanvasJSChart(options1);
-                },
-                activate: function (event, ui) {
-                    //Updates the chart to its container size if it has changed.
-                    ui.newPanel.children().first().CanvasJSChart().render();
-                }
-            });
-
-        }
-    </script>
-
-    <div id="tabs" style="height: 360px">
-        <div id="tabs-1" style="height: 300px">
-            <div id="chartContainer1" style="height: 300px; width: 100%;"></div>
-        </div>
+<div id="tabs" style="height: 360px">
+    <div id="tabs-1" style="height: 300px">
+        <div id="chartContainer1" style="height: 300px; width: 100%;"></div>
     </div>
+</div>
 
 
 @section Scripts {

@@ -35,6 +35,36 @@ namespace FIT5032_Assignment.Controllers
             return View();
         }
 
+        [HttpGet]
+        public JsonResult RatingData()
+        {
+
+            List<PizzaRating> Data = db.PizzaRatings.ToList();
+
+            var RatingData = Data.Select(S => new {
+                Rating = S.Rating,
+                PizzaId = S.PizzaId
+            });
+
+            //return list as Json
+            return Json(RatingData, JsonRequestBehavior.AllowGet);
+        }
+
+        [HttpGet]
+        public JsonResult NameData()
+        {
+
+            List<Pizza> Data = db.Pizzas.ToList();
+
+            var NameData = Data.Select(S => new {
+                Id = S.Id,
+                Name = S.Name
+            });
+
+            //return list as Json
+            return Json(NameData, JsonRequestBehavior.AllowGet);
+        }
+
         public ActionResult About()
         {
             ViewBag.Message = "Your application description page.";

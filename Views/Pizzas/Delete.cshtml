@@ -1,0 +1,47 @@
+﻿@model FIT5032_Assignment.Models.Pizza
+
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="row content-padding">
+    <div class="col-sm-6">
+        <h2>Remove Pizza</h2>
+
+        <p>Are you sure you wish to remove this Pizza?</p>
+        <br />
+        <div>
+
+            <dl class="dl-horizontal">
+                <dt>
+                    @Html.DisplayNameFor(model => model.Name)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.Name)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.Description)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.Description)
+                </dd>
+
+            </dl>
+
+            @using (Html.BeginForm())
+            {
+                @Html.AntiForgeryToken()
+
+                <div class="btn-align-right col-md-2">
+                    @Html.ActionLink("Back to List", "Index", null, new { @class = "btn-style" })
+                    <input type="submit" value="Remove Pizza" class="btn-style" />
+                </div>
+            }
+        </div>
+    </div>
+    <div class="col-sm-6"></div>
+</div>

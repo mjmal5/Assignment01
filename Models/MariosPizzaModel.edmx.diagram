@@ -10,6 +10,9 @@
         <EntityTypeShape EntityType="MariosPizzaModel.Location" Width="1.5" PointX="5.875" PointY="6.875" />
         <EntityTypeShape EntityType="MariosPizzaModel.Event" Width="3.5" PointX="1.75" PointY="3" />
         <AssociationConnector Association="MariosPizzaModel.LocationBooking" />
+        <EntityTypeShape EntityType="MariosPizzaModel.Pizza" Width="1.5" PointX="8.625" PointY="8" />
+        <EntityTypeShape EntityType="MariosPizzaModel.PizzaRating" Width="1.5" PointX="11" PointY="8.75" />
+        <AssociationConnector Association="MariosPizzaModel.PizzaPizzaRating" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

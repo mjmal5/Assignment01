@@ -1,0 +1,50 @@
+﻿@model IEnumerable<FIT5032_Assignment.Models.PizzaRating>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="row content-padding">
+    <div class="col-sm-6">
+
+        <h2>Your Pizza Ratings</h2>
+        <br />
+
+        <table class="table">
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.Pizza.Name)
+                </th>
+
+                <th>
+                    @Html.DisplayNameFor(model => model.Rating)
+                </th>
+
+                <th></th>
+            </tr>
+
+            @foreach (var item in Model)
+            {
+                <tr>
+
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Pizza.Name)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Rating)
+                    </td>
+                    <td>
+                        @Html.ActionLink("Remove", "Delete", new { id = item.Id })
+                    </td>
+                </tr>
+            }
+
+        </table>
+        <div class="btn-align-right">
+            <br />
+            @Html.ActionLink("Rate a Pizza", "Rate", null, null, new { @class = "btn-style" })
+        </div>
+    </div>
+    <div class="col-sm-6"></div>
+</div>

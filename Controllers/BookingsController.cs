@@ -57,7 +57,7 @@ namespace FIT5032_Assignment.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "BookingId,BookingGuestNum,BookingDate,BookingTime,LocationId,CustomerCustId")] Booking booking)
+        public ActionResult Create([Bind(Include = "BookingId,BookingGuestNum,BookingDate,BookingTime,LocationId")] Booking booking)
         {
 
             booking.UserId = User.Identity.GetUserId();

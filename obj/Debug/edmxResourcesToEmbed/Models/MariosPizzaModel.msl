@@ -43,5 +43,24 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
+    <EntitySetMapping Name="Pizzas">
+      <EntityTypeMapping TypeName="IsTypeOf(MariosPizzaModel.Pizza)">
+        <MappingFragment StoreEntitySet="Pizzas">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PizzaRatings">
+      <EntityTypeMapping TypeName="IsTypeOf(MariosPizzaModel.PizzaRating)">
+        <MappingFragment StoreEntitySet="PizzaRatings">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Rating" ColumnName="Rating" />
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+          <ScalarProperty Name="PizzaId" ColumnName="PizzaId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
   </EntityContainerMapping>
 </Mapping>

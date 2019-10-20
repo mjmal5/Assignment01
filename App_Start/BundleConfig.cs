@@ -34,12 +34,14 @@ namespace FIT5032_Assignment
                     ));
 
             bundles.Add(new ScriptBundle("~/bundles/canvas").Include(
-                    "~/Scripts/jquery.canvasjs.min.js"
+                    "~/Scripts/jquery.canvasjs.min.js",
+                    "~/Scripts/pizzaRatings.js"
                     ));
             
 
             bundles.Add(new ScriptBundle("~/bundles/mapbox").Include(
-            "~/Scripts/location.js"));
+                    "~/Scripts/location.js"
+            ));
 
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/bootstrap.css",
@@ -49,7 +51,9 @@ namespace FIT5032_Assignment
                       "~/Content/fullcalendar.min.css"
                       ));
 
-
+            bundles.Add(new ScriptBundle("~/bundles/mapbox").Include(
+                      "~/Scripts/datepicker-constraints.js"
+            ));
 
         }
     }

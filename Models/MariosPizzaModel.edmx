@@ -10,9 +10,15 @@
     <EntitySet Name="Bookings" EntityType="MariosPizzaModel.Store.Bookings" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="Locations" EntityType="MariosPizzaModel.Store.Locations" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="Events" EntityType="MariosPizzaModel.Store.Events" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Pizzas" EntityType="MariosPizzaModel.Store.Pizzas" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="PizzaRatings" EntityType="MariosPizzaModel.Store.PizzaRatings" store:Type="Tables" Schema="dbo" />
     <AssociationSet Name="LocationBooking" Association="MariosPizzaModel.Store.LocationBooking">
       <End Role="Location" EntitySet="Locations" />
       <End Role="Booking" EntitySet="Bookings" />
+    </AssociationSet>
+    <AssociationSet Name="PizzaPizzaRating" Association="MariosPizzaModel.Store.PizzaPizzaRating">
+      <End Role="Pizza" EntitySet="Pizzas" />
+      <End Role="PizzaRating" EntitySet="PizzaRatings" />
     </AssociationSet>
   </EntityContainer>
   <EntityType Name="Customers">
@@ -53,6 +59,23 @@
     <Property Name="Title" Type="nvarchar(max)" Nullable="false" />
     <Property Name="Start" Type="datetime" Nullable="false" />
   </EntityType>
+  <EntityType Name="Pizzas">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Description" Type="nvarchar(max)" Nullable="false" />
+  </EntityType>
+  <EntityType Name="PizzaRatings">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Rating" Type="smallint" Nullable="false" />
+    <Property Name="UserId" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="PizzaId" Type="int" Nullable="false" />
+  </EntityType>
   <Association Name="LocationBooking">
     <End Role="Location" Type="MariosPizzaModel.Store.Locations" Multiplicity="1">
       <OnDelete Action="Cascade" />
@@ -64,6 +87,18 @@
       </Principal>
       <Dependent Role="Booking">
         <PropertyRef Name="LocationId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="PizzaPizzaRating">
+    <End Role="Pizza" Type="MariosPizzaModel.Store.Pizzas" Multiplicity="1" />
+    <End Role="PizzaRating" Type="MariosPizzaModel.Store.PizzaRatings" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Pizza">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="PizzaRating">
+        <PropertyRef Name="PizzaId" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
@@ -79,6 +114,12 @@
           <AssociationSet Name="LocationBooking" Association="MariosPizzaModel.LocationBooking">
             <End Role="Location" EntitySet="Locations" />
             <End Role="Booking" EntitySet="Bookings" />
+          </AssociationSet>
+          <EntitySet Name="Pizzas" EntityType="MariosPizzaModel.Pizza" />
+          <EntitySet Name="PizzaRatings" EntityType="MariosPizzaModel.PizzaRating" />
+          <AssociationSet Name="PizzaPizzaRating" Association="MariosPizzaModel.PizzaPizzaRating">
+            <End Role="Pizza" EntitySet="Pizzas" />
+            <End Role="PizzaRating" EntitySet="PizzaRatings" />
           </AssociationSet>
         </EntityContainer>
         <EntityType Name="Customer">
@@ -135,6 +176,37 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <EntityType Name="Pizza">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" Nullable="false" />
+          <NavigationProperty Name="PizzaRatings" Relationship="MariosPizzaModel.PizzaPizzaRating" FromRole="Pizza" ToRole="PizzaRating" />
+          <Property Name="Description" Type="String" Nullable="false" />
+        </EntityType>
+        <EntityType Name="PizzaRating">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Rating" Type="Int16" Nullable="false" />
+          <Property Name="UserId" Type="String" Nullable="false" />
+          <NavigationProperty Name="Pizza" Relationship="MariosPizzaModel.PizzaPizzaRating" FromRole="PizzaRating" ToRole="Pizza" />
+          <Property Name="PizzaId" Type="Int32" Nullable="false" />
+        </EntityType>
+        <Association Name="PizzaPizzaRating">
+          <End Type="MariosPizzaModel.Pizza" Role="Pizza" Multiplicity="1" />
+          <End Type="MariosPizzaModel.PizzaRating" Role="PizzaRating" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Pizza">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="PizzaRating">
+              <PropertyRef Name="PizzaId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -180,6 +252,25 @@
           <ScalarProperty Name="Id" ColumnName="Id" />
           <ScalarProperty Name="Title" ColumnName="Title" />
           <ScalarProperty Name="Start" ColumnName="Start" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Pizzas">
+      <EntityTypeMapping TypeName="IsTypeOf(MariosPizzaModel.Pizza)">
+        <MappingFragment StoreEntitySet="Pizzas">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PizzaRatings">
+      <EntityTypeMapping TypeName="IsTypeOf(MariosPizzaModel.PizzaRating)">
+        <MappingFragment StoreEntitySet="PizzaRatings">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Rating" ColumnName="Rating" />
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+          <ScalarProperty Name="PizzaId" ColumnName="PizzaId" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
