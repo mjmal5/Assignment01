@@ -4,6 +4,7 @@
 }
 
 <h2>Pizza Ratings</h2>
+<br />
 
 <div id="tabs" style="height: 360px">
     <div id="tabs-1" style="height: 300px">
@@ -11,6 +12,10 @@
     </div>
 </div>
 
+<div class="btn-align-right">
+    <br />
+    @Html.ActionLink("Back to Admin Menu", "../Home/Admin", null, null, new { @class = "btn-style " })
+</div>
 
 @section Scripts {
     @Scripts.Render("~/bundles/canvas")

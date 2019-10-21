@@ -20,6 +20,21 @@ namespace FIT5032_Assignment.Controllers
             return View();
         }
 
+        public ActionResult Contact()
+        {
+            return View();
+        }
+
+        public ActionResult Menu()
+        {
+            return View(db.Pizzas.ToList());
+        }
+
+        public ActionResult StaffCalendar()
+        {
+            return View(db.Events.ToList());
+        }
+
         public ActionResult Admin()
         {
             return View();
@@ -95,7 +110,7 @@ namespace FIT5032_Assignment.Controllers
 
                     string path = Server.MapPath("~/Uploads/Attachments/");
                     string strExt = Path.GetExtension(attachment.FileName);
-                    string saveName = (name + "-" + $@"{DateTime.Now.Ticks}.txt");
+                    string saveName = (name + "-" + $@"{DateTime.Now.Ticks}" + strExt);
 
                     if (attachment != null)
                     {
@@ -104,7 +119,7 @@ namespace FIT5032_Assignment.Controllers
                             Directory.CreateDirectory(path);
                         }
 
-                        if ((strExt != ".pdf"))
+                        if ((strExt != ".pdf" && strExt != ".txt"))
                         {
                             ViewBag.Message = "Invalid File Type (Must be .pdf)";
                         }
@@ -124,6 +139,68 @@ namespace FIT5032_Assignment.Controllers
                     ModelState.Clear();
 
                     return View(new EmailModel());
+                }
+                catch
+                {
+                    ViewBag.Result = "Email Failed!";
+                    return View();
+                }
+            }
+
+            return View();
+        }
+
+        public ActionResult BulkEmail()
+        {
+            return View(new BulkEmailModel());
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult BulkEmail(BulkEmailModel model, HttpPostedFileBase attachment)
+        {
+
+            if (ModelState.IsValid)
+            {
+                try
+                {
+                    String name = model.Name;
+                    String contents = model.Contents;
+                    //String attachment = model.Attachment;
+                    //String fileAttachment = attachment.FileName;
+
+
+                    string path = Server.MapPath("~/Uploads/Attachments/");
+                    string strExt = Path.GetExtension(attachment.FileName);
+                    string saveName = (name + "-" + $@"{DateTime.Now.Ticks}" + strExt);
+
+                    if (attachment != null)
+                    {
+                        if (!Directory.Exists(path))
+                        {
+                            Directory.CreateDirectory(path);
+                        }
+
+                        if ((strExt != ".pdf" && strExt != ".txt"))
+                        {
+                            ViewBag.Message = "Invalid File Type (Must be .pdf)";
+                        }
+                        else
+                        {
+                            attachment.SaveAs(path + Path.GetFileName(saveName));
+                            ViewBag.Message = "File uploaded successfully.";
+                        }
+                    }
+
+
+                    BulkEmailSender es = new BulkEmailSender();
+                    es.BulkSend(name, contents, saveName);
+
+                    ViewBag.Result = "Email has been sent";
+
+                    ModelState.Clear();
+
+                    return View(new BulkEmailModel());
                 }
                 catch
                 {

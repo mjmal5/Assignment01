@@ -12,48 +12,36 @@
         <br />
 
         <table class="table">
-            <thead>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.BookingDate)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.BookingTime)
+                </th>
+                <th></th>
+            </tr>
+
+            @foreach (var item in Model)
+            {
                 <tr>
-                    <th>
-                        @Html.DisplayNameFor(model => model.BookingDate)
-                    </th>
-                    <th>
-                        @Html.DisplayNameFor(model => model.BookingTime)
-                    </th>
-                    <th>
-                        @Html.DisplayNameFor(model => model.BookingGuestNum)
-                    </th>
-                    <th>
-                        @Html.DisplayNameFor(model => model.Location.Name)
-                    </th>
-                    <th></th>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.BookingDate)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.BookingTime)
+                    </td>
+                    <td>
+                        @Html.ActionLink("Edit", "Edit", new { id = item.BookingId }) |
+                        @Html.ActionLink("Details", "Details", new { id = item.BookingId }) |
+                        @Html.ActionLink("Cancel", "Delete", new { id = item.BookingId })
+                    </td>
                 </tr>
-            </thead>
-            <tbody>
-                @foreach (var item in Model)
-                {
-                    <tr>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.BookingDate)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.BookingTime)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.BookingGuestNum)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.Location.Name)
-                        </td>
-                        <td>
-                            @Html.ActionLink("Edit", "Edit", new { id = item.BookingId }) |
-                            @Html.ActionLink("Details", "Details", new { id = item.BookingId }) |
-                            @Html.ActionLink("Cancel", "Delete", new { id = item.BookingId })
-                        </td>
-                    </tr>
-                }
-            </tbody>
+            }
+
         </table>
+        <br />
+        <br />
         <div class="btn-align-right">
             <br />
             @Html.ActionLink("Make a Booking", "Create", null, null, new { @class = "btn-style" })
@@ -61,13 +49,3 @@
     </div>
     <div class="col-sm-6"></div>
 </div>
-
-@section Scripts {
-    @Scripts.Render("~/Scripts/DataTables/jquery.dataTables.js")
-    @Scripts.Render("~/Scripts/DataTables/dataTables.bootstrap.js")
-    <script>
-                $(document).ready(function () {
-                    $('.table').DataTable();
-                });
-    </script>
-}

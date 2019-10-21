@@ -1,0 +1,26 @@
+TO DO
+
+*Add two features to the Map
+*Update Customer Table when user is registered with customer details (CustID = ID) 
+*Fix Date format conflict in datepicker in Booking/create
+*Look into SendGrid Issue
+*Remove Option to choose pizza you have already rated
+ or if the pizzaid/userid combo exist in the PizzaRating table direct the user to an edit view 
+*Add Email Column to customer table 
+*Loop though email column customer table then create array of email for BulkEmailSender 
+*Validate against files over a specific size and remove .txt from file extension check
+*Look over all validation in the Models, Controllers and Views
+*Page Permissions (Set Name Data and Ranking Data Pages)!!!
+*Minify Javascript
+*Complete website optimisation
+
+
+IF TIME PERMITS
+*Add events ontop of Calendar and remove table
+*Fix Nav menu responsiveness (Set Screen Breakpoint to stop it moving down a line)
+*Create email table and fill it with sent email data
+*Add time to datepicker
+
+EMAIL TUTOR ABOUT
+
+*web.config Custom Headers??

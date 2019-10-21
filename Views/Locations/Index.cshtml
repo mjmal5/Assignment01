@@ -5,59 +5,62 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
+
 <div class="row content-padding">
-    <div class="col-sm-6">
+    <div class="col-sm-12">
+        <h2>Restaurant Map</h2>
+        <br />
 
-        <div id="map" style="height:300px"></div>
+        <div class="map-container">
+            <div id="map" style="height:300px"></div>
 
-        <table class="table">
-            <tr>
-                <th>
-                    @Html.DisplayNameFor(model => model.Name)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.Description)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.Latitude)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.Longitude)
-                </th>
-                <th></th>
-            </tr>
-
-            @foreach (var item in Model)
-            {
-                <tr class="coordinates">
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Name)
-                    </td>
-                    <td class="description">
-                        @Html.DisplayFor(modelItem => item.Description)
-                    </td>
-                    <td class="latitude">
-                        @Html.DisplayFor(modelItem => item.Latitude)
-                    </td>
-                    <td class="longitude">
-                        @Html.DisplayFor(modelItem => item.Longitude)
-                    </td>
-                    <td>
-                        @Html.ActionLink("Edit", "Edit", new { id = item.LocationId }) |
-                        @Html.ActionLink("Details", "Details", new { id = item.LocationId }) |
-                        @Html.ActionLink("Delete", "Delete", new { id = item.LocationId })
-                    </td>
+            <table class="table map-remove">
+                <tr>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Name)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Description)
+                    </th>
+                    <th></th>
                 </tr>
-            }
 
-        </table>
+                @foreach (var item in Model)
+                {
+                    <tr class="coordinates">
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Name)
+                        </td>
+                        <td class="description">
+                            @Html.DisplayFor(modelItem => item.Description)
+                        </td>
+                        <td class="latitude" style="display:none;">
+                            @Html.DisplayFor(modelItem => item.Latitude)
+                        </td>
+                        <td class="longitude" style="display:none;">
+                            @Html.DisplayFor(modelItem => item.Longitude)
+                        </td>
+                        <td>
+                            @Html.ActionLink("Edit", "Edit", new { id = item.LocationId }) |
+                            @Html.ActionLink("Details", "Details", new { id = item.LocationId }) |
+                            @Html.ActionLink("Delete", "Delete", new { id = item.LocationId })
+                        </td>
+                    </tr>
+                }
+
+            </table>
+        </div>
+
+        <div class="map-missing" style="display:none;">
+            <p>Please add a location</p>
+        </div>
 
         <div class="btn-align-right">
             <br />
+            @Html.ActionLink("Back to Admin Menu", "../Home/Admin", null, null, new { @class = "btn-style " })
             @Html.ActionLink("Add a Location", "Create", null, null, new { @class = "btn-style" })
         </div>
     </div>
-    <div class="col-sm-6"></div>
 </div>
 
 @section Scripts {

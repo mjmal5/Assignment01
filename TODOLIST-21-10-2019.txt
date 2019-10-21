@@ -1,0 +1,41 @@
+TO DO
+
+*Page Permissions (Set Name Data and Ranking Data Pages)!!!
+*Fix Layout of Admin Menu
+*Add two features to the Map
+*Update Customer Table when user is registered with customer details (CustID = ID) 
+*Fix Layout in Make a Booking
+*Fix Date format conflict in datepicker in Booking/create
+*Look into SendGrid Issue
+*Remove Option to choose pizza you have already rated
+ or if the pizzaid/userid combo exist in the PizzaRating table direct the user to an edit view 
+*Display map on restaraunt finder intex page even if no locations are entered
+*Add events calendar to Staff Memeber menu options
+*Fix Issue with map not appearing!!!
+*Add Email Column to customer table 
+*Loop though email column customer table then create array of email for BulkEmailSender 
+*Fix Pizza Index Heading (Call Pizz Menu)
+*Make Edit/Create Pizza Description Textboxes into TeaxtAreas (edit Razor htmlhelper)
+*Remove description for Pizza index page
+*Add Back to admin menu button
+*Look over all validation in the Models, Controllers and Views
+*Validate against files over a specific size and remove .txt from file extension check
+*Add Contact Page with email (No attachments) and Contact Address / Phone Number etc.
+*Minify Javascript
+*Complete website optimisation
+*Add time to datepicker
+
+IF TIME PERMITS
+
+*Add menu page displaying Pizza table details
+*Add events ontop of Calendar and remove table
+*Turn off edit abilities on Staff Member Accounts
+*Fix Nav menu responsiveness (Set Screen Breakpoint to stop it moving down a line)
+*Make Pizza Ratings chart look pretty with CSS
+*Make TextArea on careers page responsive to browser height (use 20vh)
+*Create email table and fill it with sent email data
+
+
+EMAIL TUTOR ABOUT
+
+*web.config Custom Headers??

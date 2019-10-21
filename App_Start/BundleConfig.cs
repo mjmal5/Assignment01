@@ -8,52 +8,81 @@ namespace FIT5032_Assignment
         // For more information on bundling, visit https://go.microsoft.com/fwlink/?LinkId=301862
         public static void RegisterBundles(BundleCollection bundles)
         {
+            //Jquery
             bundles.Add(new ScriptBundle("~/bundles/jquery").Include(
                         "~/Scripts/jquery-{version}.js",
-                        "~/Scripts/jquery-ui.js"));
+                        "~/Scripts/jquery-ui.js"
+            ));
 
+            //Jquery Validate
             bundles.Add(new ScriptBundle("~/bundles/jqueryval").Include(
-                        "~/Scripts/jquery.validate*"));
+                        "~/Scripts/jquery.validate*"
+            ));
 
-            // Use the development version of Modernizr to develop with and learn from. Then, when you're
-            // ready for production, use the build tool at https://modernizr.com to pick only the tests you need.
-            bundles.Add(new ScriptBundle("~/bundles/modernizr").Include(
-                        "~/Scripts/modernizr-*"));
-
-            bundles.Add(new ScriptBundle("~/bundles/bootstrap").Include(
-                      "~/Scripts/bootstrap.js"));
-
-            bundles.Add(new ScriptBundle("~/bundles/custom").Include(
-                      "~/Scripts/main.js"));
-
-            bundles.Add(new ScriptBundle("~/bundles/fullcalendar").Include(
-                    //"~/Scripts/lib/jquery.min.js",
-                    "~/Scripts/lib/moment.min.js",
-                    "~/Scripts/fullcalendar.js",
-                    "~/Scripts/calendar.js"
-                    ));
-
+            //Jquery Canvas (Pizza Ratings Graph)
             bundles.Add(new ScriptBundle("~/bundles/canvas").Include(
                     "~/Scripts/jquery.canvasjs.min.js",
                     "~/Scripts/pizzaRatings.js"
-                    ));
-            
+            ));
 
+            //Modernizr
+            bundles.Add(new ScriptBundle("~/bundles/modernizr").Include(
+                        "~/Scripts/modernizr-*"
+            ));
+
+            //Bootstrap
+            bundles.Add(new ScriptBundle("~/bundles/bootstrap").Include(
+                      "~/Scripts/bootstrap.js"
+            ));
+
+            //Custom
+            bundles.Add(new ScriptBundle("~/bundles/custom").Include(
+                      "~/Scripts/main.js"
+            ));
+
+            //Full Calendar
+            bundles.Add(new ScriptBundle("~/bundles/fullcalendar").Include(
+                    "~/Scripts/lib/moment.min.js",
+                    "~/Scripts/fullcalendar.js"
+            ));
+
+            //Staff Calendar
+            bundles.Add(new ScriptBundle("~/bundles/staffcalendar").Include(
+                    "~/Scripts/staffcalendar.js"
+            ));
+
+            //Admin Calendar
+            bundles.Add(new ScriptBundle("~/bundles/admincalendar").Include(
+                    "~/Scripts/admincalendar.js"
+            ));
+
+            
+            //Mapbox (Locations and Restaurant Finder Maps)
             bundles.Add(new ScriptBundle("~/bundles/mapbox").Include(
                     "~/Scripts/location.js"
             ));
 
+            //DatePicker Constraints
+            bundles.Add(new ScriptBundle("~/bundles/datepicker").Include(
+                      "~/Scripts/datepicker-constraints.js"
+            ));
+
+            //JQuery DataTables
+            bundles.Add(new ScriptBundle("~/bundles/dataTables").Include(
+                      "~/Scripts/DataTables/jquery.dataTables.js",
+                      "~/Scripts/DataTables/dataTables.bootstrap.js"
+            ));
+
+            //CSS
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/bootstrap.css",
                       "~/Content/site.css",
                       "~/Content/jquery-ui.css",
                       "~/Content/style.css",
                       "~/Content/fullcalendar.min.css"
-                      ));
-
-            bundles.Add(new ScriptBundle("~/bundles/mapbox").Include(
-                      "~/Scripts/datepicker-constraints.js"
             ));
+
+
 
         }
     }

@@ -221,6 +221,7 @@
     <Compile Include="Models\Booking.cs">
       <DependentUpon>MariosPizzaModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\BulkEmailModel.cs" />
     <Compile Include="Models\Customer.cs">
       <DependentUpon>MariosPizzaModel.tt</DependentUpon>
     </Compile>
@@ -462,7 +463,8 @@
     <Content Include="Content\DataTables\css\mixins.scss" />
     <Content Include="Content\DataTables\css\common.scss" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
-    <Content Include="Scripts\calendar.js" />
+    <Content Include="Scripts\admincalendar.js" />
+    <Content Include="Scripts\staffcalendar.js" />
     <Content Include="Scripts\DataTables\autoFill.bootstrap.js" />
     <Content Include="Scripts\DataTables\autoFill.bootstrap.min.js" />
     <Content Include="Scripts\DataTables\autoFill.bootstrap4.js" />
@@ -711,6 +713,10 @@
     <Content Include="Views\PizzaRatings\Index.cshtml" />
     <Content Include="Views\Home\RatingData.cshtml" />
     <Content Include="Views\Home\NameData.cshtml" />
+    <Content Include="Views\Home\BulkEmail.cshtml" />
+    <Content Include="Views\Home\Contact.cshtml" />
+    <Content Include="Views\Home\Menu.cshtml" />
+    <Content Include="Views\Home\StaffCalendar.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />

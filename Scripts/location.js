@@ -7,6 +7,18 @@
 */
 const TOKEN = "pk.eyJ1IjoibWFsY29sbW1hbGxveSIsImEiOiJjazF4NTgyemwwMHNoM2NudXlvaGZjMGcyIn0.ZmWeh2cCSVDhLG3Z5hbYJg";
 var locations = [];
+
+
+$(document).ready(function () {
+
+    //Index page
+    if ($(".map-remove tr").length <= 1) {
+        $(".map-container").hide();
+        $(".map-missing").show();
+    }
+});
+
+
 // The first step is obtain all the latitude and longitude from the HTML
 // The below is a simple jQuery selector
 $(".coordinates").each(function () {

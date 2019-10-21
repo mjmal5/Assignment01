@@ -1,0 +1,60 @@
+﻿@model FIT5032_Assignment.Models.BulkEmailModel
+@{
+    ViewBag.Title = "BulkEmail";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="row content-padding">
+    <div class="col-sm-6">
+
+        <h2>Bulk Email</h2>
+
+        <br />
+        @using (Html.BeginForm(
+            null, null, FormMethod.Post, new { enctype = "multipart/form-data" }))
+        {
+            @Html.AntiForgeryToken()
+
+
+            if (@ViewBag.Result != null)
+            {
+                <div class="alert alert-info">@ViewBag.Result</div>
+            }
+
+            <div class="form-horizontal">
+                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+                <div>
+                    @Html.LabelFor(model => model.Name,"Subject" , htmlAttributes: new { @class = "control-label" })
+                    <div>
+                        @Html.EditorFor(model => model.Name, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div>
+                    @Html.LabelFor(model => model.Contents, "Email Body", htmlAttributes: new { @class = "control-label" })
+                    <div>
+                        @Html.TextAreaFor(model => model.Contents, new { @class = "form-control text-area-message" })
+                        @Html.ValidationMessageFor(model => model.Contents, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div>
+                    @Html.LabelFor(model => model.Attachment, "Attachment", htmlAttributes: new { @class = "control-label" })
+                    <div>
+                        @Html.TextBoxFor(model => model.Attachment, new { type = "file" })
+                        @Html.ValidationMessageFor(model => model.Attachment, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="btn-align-right">
+                    @Html.ActionLink("Back to Admin Menu", "../Home/Admin", null, null, new { @class = "btn-style " })
+                    <input type="submit" value="Send" class="btn-style" />
+                </div>
+
+            </div>
+        }
+    </div>
+    <div class="col-sm-6"></div>
+</div>

@@ -57,6 +57,10 @@ select {
     margin: 0px !important;
 }
 
+.remove-border tbody tr th, .remove-border tbody tr td {
+    border: none;
+}
+
 .home-content-padding {
     padding-top: 20vh;
 }
@@ -98,10 +102,22 @@ input, select, textarea {
     text-align: center;
 }
 
+div#DataTables_Table_0_paginate {
+    text-align: right;
+}
+
+div#DataTables_Table_0_filter {
+    text-align: right;
+}
+
 /*Contact Us*/
+.contact-details {
+    padding-left: 10px;
+}
+
 .text-area-message {
     width: 100%;
-    height: 300px !important;
+    height: 20vh !important;
 }
 
 /*Events Calendar*/
@@ -115,4 +131,11 @@ tbody.fc-body {
 
 thead.fc-head {
     background-color: #222222;
+}
+
+/*Admin Menu*/
+.ul-admin-options li{
+    list-style-type: none;
+    font-size:20px;
+    padding: 5px 0px;
 }

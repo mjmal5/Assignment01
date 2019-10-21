@@ -1,0 +1,31 @@
+﻿@model IEnumerable<FIT5032_Assignment.Models.Pizza>
+@{
+    ViewBag.Title = "Menu";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<div class="row content-padding">
+    <div class="col-sm-6">
+
+        <h2>Our Menu</h2>
+        <br />
+        <table class="table remove-border">
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Name)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Description)
+                    </td>
+                </tr>
+            }
+
+        </table>
+
+    </div>
+    <div class="col-sm-6"></div>
+</div>
+

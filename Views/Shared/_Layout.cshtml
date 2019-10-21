@@ -30,12 +30,15 @@
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
 
+                    <li>@Html.ActionLink("Our Menu", "Menu", "Home")</li>
+
                     @if (User.Identity.IsAuthenticated && HttpContext.Current.User.IsInRole("SuperUser") || HttpContext.Current.User.IsInRole("Customer"))
                     {
                         <!-- Customer and SuperUser options -->
                         <li>@Html.ActionLink("Book a table", "Index", "Bookings")</li>
                         <li>@Html.ActionLink("Rate our Pizza", "Index", "PizzaRatings")</li>
                         <li>@Html.ActionLink("Restaurant Finder", "Finder", "Home")</li>
+                        <li>@Html.ActionLink("Contact Us", "Contact", "Home")</li>
                         <li>@Html.ActionLink("Careers", "Careers", "Home")</li>
                         <li class="now-hiring-li"><div class="now-hiring-div">Now Hiring!</div></li>
                     }
@@ -43,12 +46,21 @@
                     @if (User.Identity.IsAuthenticated && HttpContext.Current.User.IsInRole("SuperUser") || HttpContext.Current.User.IsInRole("Staff Memeber"))
                     {
                         <!-- Staff Member and SuperUser options -->
-
+                        <li>@Html.ActionLink("Events Calendar", "StaffCalendar", "Home")</li>
                     }
 
                     @if (User.Identity.IsAuthenticated && HttpContext.Current.User.IsInRole("SuperUser") || HttpContext.Current.User.IsInRole("Administrator"))
                     {
+                        <!-- Staff Administrator and SuperUser options -->
                         <li>@Html.ActionLink("Admin Options", "Admin", "Home")</li>
+                    }
+
+                    @if (!User.Identity.IsAuthenticated)
+                    {
+                        <li>@Html.ActionLink("Restaurant Finder", "Finder", "Home")</li>
+                        <li>@Html.ActionLink("Contact Us", "Contact", "Home")</li>
+                        <li>@Html.ActionLink("Careers", "Careers", "Home")</li>
+                        <li class="now-hiring-li"><div class="now-hiring-div">Now Hiring!</div></li>
                     }
 
                 </ul>

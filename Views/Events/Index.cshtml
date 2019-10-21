@@ -39,8 +39,15 @@
         }
 
     </table>
+
+    <div class="form-group">
+        <div class="btn-align-right col-md-2">
+            @Html.ActionLink("Back to Admin Menu", "../Home/Admin", null, null, new { @class = "btn-style " })
+        </div>
+    </div>
 </div>
 
 @section Scripts {
-    @Scripts.Render("~/bundles/fullcalendar")
+    @Scripts.Render("~/bundles/fullcalendar"),
+    @Scripts.Render("~/bundles/admincalendar")
 }
