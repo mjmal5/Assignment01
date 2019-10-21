@@ -102,6 +102,10 @@ input, select, textarea {
     text-align: center;
 }
 
+div#map {
+    height: 60vh;
+}
+
 div#DataTables_Table_0_paginate {
     text-align: right;
 }
@@ -132,6 +136,7 @@ tbody.fc-body {
 thead.fc-head {
     background-color: #222222;
 }
+
 
 /*Admin Menu*/
 .ul-admin-options li{

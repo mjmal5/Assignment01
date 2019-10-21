@@ -10,7 +10,7 @@
         <h2>Restaurant Finder</h2>
 
         <div class="map-container">
-            <div id="map" style="height:300px"></div>
+            <div id="map"></div>
 
             <table class="table map-remove" style="display:none;">
                 <tr></tr>
@@ -39,6 +39,9 @@
         </div>
     </div>
 </div>
+
 @section Scripts {
     @Scripts.Render("~/bundles/mapbox")
+    @Styles.Render("~/Content/mapbox-gl-directions")
+
 }

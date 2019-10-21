@@ -10,6 +10,7 @@ using FIT5032_Assignment.Models;
 
 namespace FIT5032_Assignment.Controllers
 {
+    [Authorize(Roles = "SuperUser, Administrator")]
     public class PizzasController : Controller
     {
         private MariosPizzaModelContainer db = new MariosPizzaModelContainer();
@@ -42,8 +43,6 @@ namespace FIT5032_Assignment.Controllers
         }
 
         // POST: Pizzas/Create
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "Id,Name,Description")] Pizza pizza)

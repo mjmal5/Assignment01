@@ -11,6 +11,7 @@ using Microsoft.AspNet.Identity;
 
 namespace FIT5032_Assignment.Controllers
 {
+    [Authorize(Roles = "SuperUser, Customer")]
     public class PizzaRatingsController : Controller
     {
         private MariosPizzaModelContainer db = new MariosPizzaModelContainer();

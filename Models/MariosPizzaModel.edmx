@@ -29,6 +29,7 @@
     <Property Name="CustFirstName" Type="nvarchar(max)" Nullable="false" />
     <Property Name="CustLastName" Type="nvarchar(max)" Nullable="false" />
     <Property Name="CustPhoneNumber" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="CustEmail" Type="nvarchar(max)" Nullable="false" />
   </EntityType>
   <EntityType Name="Bookings">
     <Key>
@@ -130,6 +131,7 @@
           <Property Name="CustFirstName" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
           <Property Name="CustLastName" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
           <Property Name="CustPhoneNumber" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="CustEmail" Type="String" Nullable="false" />
         </EntityType>
         <EntityType Name="Booking">
           <Key>
@@ -220,6 +222,7 @@
           <ScalarProperty Name="CustFirstName" ColumnName="CustFirstName" />
           <ScalarProperty Name="CustLastName" ColumnName="CustLastName" />
           <ScalarProperty Name="CustPhoneNumber" ColumnName="CustPhoneNumber" />
+          <ScalarProperty Name="CustEmail" ColumnName="CustEmail" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

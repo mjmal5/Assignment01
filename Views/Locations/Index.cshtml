@@ -12,7 +12,7 @@
         <br />
 
         <div class="map-container">
-            <div id="map" style="height:300px"></div>
+            <div id="map"></div>
 
             <table class="table map-remove">
                 <tr>
@@ -65,5 +65,7 @@
 
 @section Scripts {
     @Scripts.Render("~/bundles/mapbox")
+    @Styles.Render("~/Content/mapbox-gl-directions")
+   
 }
 

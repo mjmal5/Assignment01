@@ -1,17 +1,9 @@
-﻿/**
-* This is a simple JavaScript demonstration of how to call MapBox API to load the maps.
-* I have set the default configuration to enable the geocoder and the navigation control.
-* https://www.mapbox.com/mapbox-gl-js/example/popup-on-click/
-*
-* @author Jian Liew <jian.liew@monash.edu>
-*/
-const TOKEN = "pk.eyJ1IjoibWFsY29sbW1hbGxveSIsImEiOiJjazF4NTgyemwwMHNoM2NudXlvaGZjMGcyIn0.ZmWeh2cCSVDhLG3Z5hbYJg";
+﻿const TOKEN = "pk.eyJ1IjoibWFsY29sbW1hbGxveSIsImEiOiJjazF4NTgyemwwMHNoM2NudXlvaGZjMGcyIn0.ZmWeh2cCSVDhLG3Z5hbYJg";
 var locations = [];
 
 
 $(document).ready(function () {
 
-    //Index page
     if ($(".map-remove tr").length <= 1) {
         $(".map-container").hide();
         $(".map-missing").show();
@@ -19,8 +11,6 @@ $(document).ready(function () {
 });
 
 
-// The first step is obtain all the latitude and longitude from the HTML
-// The below is a simple jQuery selector
 $(".coordinates").each(function () {
     var longitude = $(".longitude", this).text().trim();
     var latitude = $(".latitude", this).text().trim();
@@ -56,6 +46,13 @@ var map = new mapboxgl.Map({
     zoom: 11,
     center: [locations[0].longitude, locations[0].latitude]
 });
+
+map.addControl(new mapboxgl.NavigationControl());
+
+map.addControl(new MapboxDirections({
+    accessToken: mapboxgl.accessToken
+}), 'top-left');
+
 map.on('load', function () {
     // Add a layer showing the places.
     map.addLayer({

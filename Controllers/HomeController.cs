@@ -30,61 +30,9 @@ namespace FIT5032_Assignment.Controllers
             return View(db.Pizzas.ToList());
         }
 
-        public ActionResult StaffCalendar()
-        {
-            return View(db.Events.ToList());
-        }
-
-        public ActionResult Admin()
-        {
-            return View();
-        }
-
         public ActionResult Finder()
         {
             return View(db.Locations.ToList());
-        }
-
-        public ActionResult PizzaRatings()
-        {
-            return View();
-        }
-
-        [HttpGet]
-        public JsonResult RatingData()
-        {
-
-            List<PizzaRating> Data = db.PizzaRatings.ToList();
-
-            var RatingData = Data.Select(S => new {
-                Rating = S.Rating,
-                PizzaId = S.PizzaId
-            });
-
-            //return list as Json
-            return Json(RatingData, JsonRequestBehavior.AllowGet);
-        }
-
-        [HttpGet]
-        public JsonResult NameData()
-        {
-
-            List<Pizza> Data = db.Pizzas.ToList();
-
-            var NameData = Data.Select(S => new {
-                Id = S.Id,
-                Name = S.Name
-            });
-
-            //return list as Json
-            return Json(NameData, JsonRequestBehavior.AllowGet);
-        }
-
-        public ActionResult About()
-        {
-            ViewBag.Message = "Your application description page.";
-
-            return View();
         }
 
         public ActionResult Careers()
@@ -150,6 +98,57 @@ namespace FIT5032_Assignment.Controllers
             return View();
         }
 
+        [Authorize(Roles = "SuperUser, StaffMember")]
+        public ActionResult StaffCalendar()
+        {
+            return View(db.Events.ToList());
+        }
+
+        [Authorize(Roles = "SuperUser, Administrator")]
+        public ActionResult Admin()
+        {
+            return View();
+        }
+
+        [Authorize(Roles = "SuperUser, Administrator")]
+        public ActionResult PizzaRatings()
+        {
+            return View();
+        }
+
+        [HttpGet]
+        [Authorize(Roles = "SuperUser, Administrator")]
+        public JsonResult RatingData()
+        {
+
+            List<PizzaRating> Data = db.PizzaRatings.ToList();
+
+            var RatingData = Data.Select(S => new {
+                Rating = S.Rating,
+                PizzaId = S.PizzaId
+            });
+
+            //return list as Json
+            return Json(RatingData, JsonRequestBehavior.AllowGet);
+        }
+
+        [HttpGet]
+        [Authorize(Roles = "SuperUser, Administrator")]
+        public JsonResult NameData()
+        {
+
+            List<Pizza> Data = db.Pizzas.ToList();
+
+            var NameData = Data.Select(S => new {
+                Id = S.Id,
+                Name = S.Name
+            });
+
+            //return list as Json
+            return Json(NameData, JsonRequestBehavior.AllowGet);
+        }
+
+        [Authorize(Roles = "SuperUser, Administrator")]
         public ActionResult BulkEmail()
         {
             return View(new BulkEmailModel());

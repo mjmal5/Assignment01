@@ -43,7 +43,7 @@
                         <li class="now-hiring-li"><div class="now-hiring-div">Now Hiring!</div></li>
                     }
 
-                    @if (User.Identity.IsAuthenticated && HttpContext.Current.User.IsInRole("SuperUser") || HttpContext.Current.User.IsInRole("Staff Memeber"))
+                    @if (User.Identity.IsAuthenticated && HttpContext.Current.User.IsInRole("SuperUser") || HttpContext.Current.User.IsInRole("StaffMember"))
                     {
                         <!-- Staff Member and SuperUser options -->
                         <li>@Html.ActionLink("Events Calendar", "StaffCalendar", "Home")</li>

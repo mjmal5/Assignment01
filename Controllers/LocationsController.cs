@@ -10,6 +10,7 @@ using FIT5032_Assignment.Models;
 
 namespace FIT5032_Assignment.Controllers
 {
+    [Authorize(Roles = "SuperUser, Administrator")]
     public class LocationsController : Controller
     {
         private MariosPizzaModelContainer db = new MariosPizzaModelContainer();

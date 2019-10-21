@@ -59,6 +59,7 @@ namespace FIT5032_Assignment
             
             //Mapbox (Locations and Restaurant Finder Maps)
             bundles.Add(new ScriptBundle("~/bundles/mapbox").Include(
+                    "~/Scripts/mapbox-gl-directions.js",
                     "~/Scripts/location.js"
             ));
 
@@ -80,6 +81,10 @@ namespace FIT5032_Assignment
                       "~/Content/jquery-ui.css",
                       "~/Content/style.css",
                       "~/Content/fullcalendar.min.css"
+            ));
+
+            bundles.Add(new StyleBundle("~/Content/mapbox-gl-directions").Include(
+                      "~/Content/mapbox-gl-directions.css"
             ));
 
 
