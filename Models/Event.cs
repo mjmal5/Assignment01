@@ -9,7 +9,7 @@ namespace FIT5032_Assignment.Models
         public int Id { get; set; }
 
         [Required]
-        [StringLength(100, MinimumLength = 4)]
+        [StringLength(40, ErrorMessage = "Event Title must not exceed 40 characters.")]
         public string Title { get; set; }
 
         [Required]

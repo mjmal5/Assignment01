@@ -9,7 +9,7 @@ namespace FIT5032_Assignment.Models
         public int BookingId { get; set; }
 
         [Display(Name = "No. of Guests")]
-        public int BookingGuestNum { get; set; }
+        public byte BookingGuestNum { get; set; }
 
 
         [Display(Name = "Date")]
@@ -18,7 +18,7 @@ namespace FIT5032_Assignment.Models
         public System.DateTime BookingDate { get; set; }
 
         [Display(Name = "Time")]
-        [StringLength(7)]
+        //Stringlength not required due to dropdown list (causes false positives)
         public string BookingTime { get; set; }
 
         [Display(Name = "Location")]

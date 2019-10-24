@@ -2,7 +2,7 @@
 -- --------------------------------------------------
 -- Entity Designer DDL Script for SQL Server 2005, 2008, 2012 and Azure
 -- --------------------------------------------------
--- Date Created: 10/21/2019 23:22:56
+-- Date Created: 10/23/2019 21:20:34
 -- Generated from EDMX file: C:\Users\Malcolm\source\repos\FIT5032_Assignment\Models\MariosPizzaModel.edmx
 -- --------------------------------------------------
 
@@ -54,9 +54,9 @@ GO
 -- Creating table 'Customers'
 CREATE TABLE [dbo].[Customers] (
     [CustId] int IDENTITY(1,1) NOT NULL,
-    [CustFirstName] nvarchar(max)  NOT NULL,
-    [CustLastName] nvarchar(max)  NOT NULL,
-    [CustPhoneNumber] nvarchar(max)  NOT NULL,
+    [CustFirstName] nvarchar(40)  NOT NULL,
+    [CustLastName] nvarchar(40)  NOT NULL,
+    [CustPhoneNumber] nvarchar(13)  NOT NULL,
     [CustEmail] nvarchar(max)  NOT NULL
 );
 GO
@@ -64,11 +64,11 @@ GO
 -- Creating table 'Bookings'
 CREATE TABLE [dbo].[Bookings] (
     [BookingId] int IDENTITY(1,1) NOT NULL,
-    [BookingGuestNum] int  NOT NULL,
+    [BookingGuestNum] tinyint  NOT NULL,
     [BookingDate] datetime  NOT NULL,
-    [BookingTime] nvarchar(max)  NOT NULL,
+    [BookingTime] nvarchar(7)  NOT NULL,
     [LocationId] int  NOT NULL,
-    [UserId] nvarchar(max)  NOT NULL
+    [UserId] nvarchar(128)  NOT NULL
 );
 GO
 
@@ -85,7 +85,7 @@ GO
 -- Creating table 'Events'
 CREATE TABLE [dbo].[Events] (
     [Id] int IDENTITY(1,1) NOT NULL,
-    [Title] nvarchar(max)  NOT NULL,
+    [Title] nvarchar(40)  NOT NULL,
     [Start] datetime  NOT NULL
 );
 GO
@@ -93,7 +93,7 @@ GO
 -- Creating table 'Pizzas'
 CREATE TABLE [dbo].[Pizzas] (
     [Id] int IDENTITY(1,1) NOT NULL,
-    [Name] nvarchar(max)  NOT NULL,
+    [Name] nvarchar(40)  NOT NULL,
     [Description] nvarchar(max)  NOT NULL
 );
 GO
@@ -101,8 +101,8 @@ GO
 -- Creating table 'PizzaRatings'
 CREATE TABLE [dbo].[PizzaRatings] (
     [Id] int IDENTITY(1,1) NOT NULL,
-    [Rating] smallint  NOT NULL,
-    [UserId] nvarchar(max)  NOT NULL,
+    [Rating] tinyint  NOT NULL,
+    [UserId] nvarchar(128)  NOT NULL,
     [PizzaId] int  NOT NULL
 );
 GO

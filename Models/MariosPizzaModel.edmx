@@ -26,9 +26,9 @@
       <PropertyRef Name="CustId" />
     </Key>
     <Property Name="CustId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="CustFirstName" Type="nvarchar(max)" Nullable="false" />
-    <Property Name="CustLastName" Type="nvarchar(max)" Nullable="false" />
-    <Property Name="CustPhoneNumber" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="CustFirstName" Type="nvarchar" Nullable="false" MaxLength="40" />
+    <Property Name="CustLastName" Type="nvarchar" Nullable="false" MaxLength="40" />
+    <Property Name="CustPhoneNumber" Type="nvarchar" Nullable="false" MaxLength="13" />
     <Property Name="CustEmail" Type="nvarchar(max)" Nullable="false" />
   </EntityType>
   <EntityType Name="Bookings">
@@ -36,11 +36,11 @@
       <PropertyRef Name="BookingId" />
     </Key>
     <Property Name="BookingId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="BookingGuestNum" Type="int" Nullable="false" />
+    <Property Name="BookingGuestNum" Type="tinyint" Nullable="false" />
     <Property Name="BookingDate" Type="datetime" Nullable="false" />
-    <Property Name="BookingTime" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="BookingTime" Type="nvarchar" Nullable="false" MaxLength="7" />
     <Property Name="LocationId" Type="int" Nullable="false" />
-    <Property Name="UserId" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="UserId" Type="nvarchar" Nullable="false" MaxLength="128" />
   </EntityType>
   <EntityType Name="Locations">
     <Key>
@@ -57,7 +57,7 @@
       <PropertyRef Name="Id" />
     </Key>
     <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="Title" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Title" Type="nvarchar" Nullable="false" MaxLength="40" />
     <Property Name="Start" Type="datetime" Nullable="false" />
   </EntityType>
   <EntityType Name="Pizzas">
@@ -65,7 +65,7 @@
       <PropertyRef Name="Id" />
     </Key>
     <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="Name" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" Nullable="false" MaxLength="40" />
     <Property Name="Description" Type="nvarchar(max)" Nullable="false" />
   </EntityType>
   <EntityType Name="PizzaRatings">
@@ -73,8 +73,8 @@
       <PropertyRef Name="Id" />
     </Key>
     <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="Rating" Type="smallint" Nullable="false" />
-    <Property Name="UserId" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Rating" Type="tinyint" Nullable="false" />
+    <Property Name="UserId" Type="nvarchar" Nullable="false" MaxLength="128" />
     <Property Name="PizzaId" Type="int" Nullable="false" />
   </EntityType>
   <Association Name="LocationBooking">
@@ -128,9 +128,9 @@
             <PropertyRef Name="CustId" />
           </Key>
           <Property Name="CustId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="CustFirstName" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
-          <Property Name="CustLastName" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
-          <Property Name="CustPhoneNumber" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="CustFirstName" Type="String" Nullable="false" MaxLength="40" Unicode="true" FixedLength="false" />
+          <Property Name="CustLastName" Type="String" Nullable="false" MaxLength="40" Unicode="true" FixedLength="false" />
+          <Property Name="CustPhoneNumber" Type="String" Nullable="false" MaxLength="13" />
           <Property Name="CustEmail" Type="String" Nullable="false" />
         </EntityType>
         <EntityType Name="Booking">
@@ -138,11 +138,11 @@
             <PropertyRef Name="BookingId" />
           </Key>
           <Property Name="BookingId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="BookingGuestNum" Type="Int32" Nullable="false" />
+          <Property Name="BookingGuestNum" Type="Byte" Nullable="false" />
           <Property Name="BookingDate" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="BookingTime" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="BookingTime" Type="String" Nullable="false" MaxLength="7" Unicode="true" FixedLength="false" />
           <Property Name="LocationId" Type="Int32" Nullable="false" />
-          <Property Name="UserId" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="UserId" Type="String" Nullable="false" MaxLength="128" Unicode="true" FixedLength="false" />
           <NavigationProperty Name="Location" Relationship="MariosPizzaModel.LocationBooking" FromRole="Booking" ToRole="Location" />
         </EntityType>
         <EntityType Name="Location">
@@ -161,7 +161,7 @@
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Title" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="Title" Type="String" Nullable="false" MaxLength="40" Unicode="true" FixedLength="false" />
           <Property Name="Start" Type="DateTime" Nullable="false" Precision="3" />
         </EntityType>
         <Association Name="LocationBooking">
@@ -183,7 +183,7 @@
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Name" Type="String" Nullable="false" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="40" />
           <NavigationProperty Name="PizzaRatings" Relationship="MariosPizzaModel.PizzaPizzaRating" FromRole="Pizza" ToRole="PizzaRating" />
           <Property Name="Description" Type="String" Nullable="false" />
         </EntityType>
@@ -192,8 +192,8 @@
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Rating" Type="Int16" Nullable="false" />
-          <Property Name="UserId" Type="String" Nullable="false" />
+          <Property Name="Rating" Type="Byte" Nullable="false" />
+          <Property Name="UserId" Type="String" Nullable="false" MaxLength="128" />
           <NavigationProperty Name="Pizza" Relationship="MariosPizzaModel.PizzaPizzaRating" FromRole="PizzaRating" ToRole="Pizza" />
           <Property Name="PizzaId" Type="Int32" Nullable="false" />
         </EntityType>

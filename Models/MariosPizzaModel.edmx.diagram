@@ -4,11 +4,11 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="4b11ac9d1ff94fdeb139e9f20f804408" Name="Diagram1" >
-        <EntityTypeShape EntityType="MariosPizzaModel.Customer" Width="1.5" PointX="9.5" PointY="4.125" />
+      <Diagram DiagramId="4b11ac9d1ff94fdeb139e9f20f804408" Name="Diagram1" ZoomLevel="106" >
+        <EntityTypeShape EntityType="MariosPizzaModel.Customer" Width="2.25" PointX="9.5" PointY="4.125" />
         <EntityTypeShape EntityType="MariosPizzaModel.Booking" Width="2.875" PointX="6" PointY="4.125" />
         <EntityTypeShape EntityType="MariosPizzaModel.Location" Width="1.5" PointX="5.875" PointY="6.875" />
-        <EntityTypeShape EntityType="MariosPizzaModel.Event" Width="3.5" PointX="1.75" PointY="3" />
+        <EntityTypeShape EntityType="MariosPizzaModel.Event" Width="3.5" PointX="10.625" PointY="6.625" />
         <AssociationConnector Association="MariosPizzaModel.LocationBooking" />
         <EntityTypeShape EntityType="MariosPizzaModel.Pizza" Width="1.5" PointX="8.625" PointY="8" />
         <EntityTypeShape EntityType="MariosPizzaModel.PizzaRating" Width="1.5" PointX="11" PointY="8.75" />
