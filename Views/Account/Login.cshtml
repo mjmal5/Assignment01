@@ -40,12 +40,10 @@
                 </div>
 
                 <div class="btn-align-right">
+                    @Html.ActionLink("Register as a new user", "Register", null, null, new { @class = "btn-style " })
                     <input type="submit" value="Log in" class="btn-style" />
                 </div>
 
-                <p>
-                    @Html.ActionLink("Register as a new user", "Register")
-                </p>
                 @* Enable this once you have account confirmation enabled for password reset functionality
                 <p>
                     @Html.ActionLink("Forgot your password?", "ForgotPassword")

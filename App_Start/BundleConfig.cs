@@ -22,7 +22,7 @@ namespace FIT5032_Assignment
             //Jquery Canvas (Pizza Ratings Graph)
             bundles.Add(new ScriptBundle("~/bundles/canvas").Include(
                     "~/Scripts/jquery.canvasjs.min.js",
-                    "~/Scripts/pizzaRatings.js"
+                    "~/Scripts/pizzaRatings.min.js"
             ));
 
             //Modernizr
@@ -32,59 +32,55 @@ namespace FIT5032_Assignment
 
             //Bootstrap
             bundles.Add(new ScriptBundle("~/bundles/bootstrap").Include(
-                      "~/Scripts/bootstrap.js"
-            ));
-
-            //Custom
-            bundles.Add(new ScriptBundle("~/bundles/custom").Include(
-                      "~/Scripts/main.js"
+                      "~/Scripts/bootstrap.min.js"
             ));
 
             //Full Calendar
             bundles.Add(new ScriptBundle("~/bundles/fullcalendar").Include(
                     "~/Scripts/lib/moment.min.js",
-                    "~/Scripts/fullcalendar.js"
+                    "~/Scripts/fullcalendar.min.js"
             ));
 
             //Staff Calendar
             bundles.Add(new ScriptBundle("~/bundles/staffcalendar").Include(
-                    "~/Scripts/staffcalendar.js"
+                    "~/Scripts/staffCalendar.min.js"
             ));
 
             //Admin Calendar
             bundles.Add(new ScriptBundle("~/bundles/admincalendar").Include(
-                    "~/Scripts/admincalendar.js"
+                    "~/Scripts/admincalendar.min.js"
             ));
 
             
             //Mapbox (Locations and Restaurant Finder Maps)
             bundles.Add(new ScriptBundle("~/bundles/mapbox").Include(
-                    "~/Scripts/mapbox-gl-directions.js",
-                    "~/Scripts/location.js"
+                    "~/Scripts/mapbox-gl-directions.min.js",
+                    "~/Scripts/location.min.js"
             ));
 
             //DatePicker Constraints
             bundles.Add(new ScriptBundle("~/bundles/datepicker").Include(
-                      "~/Scripts/datepicker-constraints.js"
+                      "~/Scripts/lib/moment.min.js",
+                      "~/Scripts/datepicker-constraints.min.js"
             ));
 
             //JQuery DataTables
             bundles.Add(new ScriptBundle("~/bundles/dataTables").Include(
-                      "~/Scripts/DataTables/jquery.dataTables.js",
-                      "~/Scripts/DataTables/dataTables.bootstrap.js"
+                      "~/Scripts/DataTables/jquery.dataTables.min.js",
+                      "~/Scripts/DataTables/dataTables.bootstrap.min.js"
             ));
 
             //CSS
             bundles.Add(new StyleBundle("~/Content/css").Include(
-                      "~/Content/bootstrap.css",
-                      "~/Content/site.css",
-                      "~/Content/jquery-ui.css",
-                      "~/Content/style.css",
+                      "~/Content/bootstrap.min.css",
+                      "~/Content/Site.min.css",
+                      "~/Content/jquery-ui.min.css",
+                      "~/Content/style.min.css",
                       "~/Content/fullcalendar.min.css"
             ));
 
             bundles.Add(new StyleBundle("~/Content/mapbox-gl-directions").Include(
-                      "~/Content/mapbox-gl-directions.css"
+                      "~/Content/mapbox-gl-directions.min.css"
             ));
 
 

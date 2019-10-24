@@ -434,8 +434,12 @@
     <Content Include="Content\fullcalendar.print.css" />
     <Content Include="Content\fullcalendar.print.min.css" />
     <Content Include="Content\jquery-ui.css" />
+    <Content Include="Content\jquery-ui.min.css" />
     <Content Include="Content\mapbox-gl-directions.css" />
+    <Content Include="Content\mapbox-gl-directions.min.css" />
+    <Content Include="Content\Site.min.css" />
     <Content Include="Content\style.css" />
+    <Content Include="Content\style.min.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
@@ -451,6 +455,7 @@
       <LastGenOutput>MariosPizzaModel.cs</LastGenOutput>
       <DependentUpon>MariosPizzaModel.edmx</DependentUpon>
     </Content>
+    <Content Include="Scripts\admincalendar.min.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <EntityDeploy Include="Models\MariosPizzaModel.edmx">
@@ -465,10 +470,14 @@
     <Content Include="Content\DataTables\css\common.scss" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\admincalendar.js" />
+    <Content Include="Scripts\datepicker-constraints.min.js" />
     <Content Include="Scripts\jquery-ui.js" />
     <Content Include="Scripts\jquery.canvasjs.min.js" />
+    <Content Include="Scripts\location.min.js" />
     <Content Include="Scripts\mapbox-gl-directions.js" />
-    <Content Include="Scripts\staffcalendar.js" />
+    <Content Include="Scripts\mapbox-gl-directions.min.js" />
+    <Content Include="Scripts\pizzaRating.min.js" />
+    <Content Include="Scripts\staffCalendar.js" />
     <Content Include="Scripts\DataTables\autoFill.bootstrap.js" />
     <Content Include="Scripts\DataTables\autoFill.bootstrap.min.js" />
     <Content Include="Scripts\DataTables\autoFill.bootstrap4.js" />
@@ -649,13 +658,13 @@
     <Content Include="Scripts\locale\zh-cn.js" />
     <Content Include="Scripts\locale\zh-tw.js" />
     <Content Include="Scripts\location.js" />
-    <Content Include="Scripts\main.js" />
     <Content Include="Scripts\modernizr-2.8.3.js" />
     <Content Include="Scripts\moment-with-locales.js" />
     <Content Include="Scripts\moment-with-locales.min.js" />
     <Content Include="Scripts\moment.js" />
     <Content Include="Scripts\moment.min.js" />
     <Content Include="Scripts\pizzaRatings.js" />
+    <Content Include="Scripts\staffCalendar.min.js" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
