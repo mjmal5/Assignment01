@@ -3,7 +3,8 @@ TO DO
 *Update Customer Table when user is registered with customer details (CustID = ID) 
 *Remove Option to choose pizza you have already rated
  or if the pizzaid/userid combo exist in the PizzaRating table direct the user to an edit view 
-*Loop though email column customer table then create array of email for BulkEmailSender 
+*Change loop from aspnetusers to customerid
+
 *Validate against files over a specific size and remove .txt from file extension check
 
 *Complete website optimisation
