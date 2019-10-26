@@ -8,12 +8,13 @@ using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
 using FIT5032_Assignment.Models;
+using Microsoft.AspNet.Identity.EntityFramework;
 
 namespace FIT5032_Assignment.Utils
 {
     public class EmailSender
     {
-        private const String API_KEY = "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";
+        private const String API_KEY = "INSERT API KEY";
 
         string Path = HttpContext.Current.Server.MapPath("\\Uploads\\Attachments\\");
 
@@ -26,9 +27,14 @@ namespace FIT5032_Assignment.Utils
             var plainTextContent = contents;
             var htmlContent = "<p>" + contents + "</p>";
             var msg = MailHelper.CreateSingleEmail(from, to, subject, plainTextContent, htmlContent);
-            var bytes = File.ReadAllBytes(Path + attachment);
-            var file = Convert.ToBase64String(bytes);
-            msg.AddAttachment(attachment, file);
+
+            if (attachment != "")
+            {
+                var bytes = File.ReadAllBytes(Path + attachment);
+                var file = Convert.ToBase64String(bytes);
+                msg.AddAttachment(attachment, file);
+            }
+
 
             var response = client.SendEmailAsync(msg);
         }
@@ -37,38 +43,45 @@ namespace FIT5032_Assignment.Utils
 
     public class BulkEmailSender
     {
-        private const String API_KEY = "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";
+        private const String API_KEY = "INSERT API KEY";
 
-        //private MariosPizzaModelContainer db = new MariosPizzaModelContainer();
+        private MariosPizzaModelContainer db = new MariosPizzaModelContainer();
 
         string Path = HttpContext.Current.Server.MapPath("\\Uploads\\Attachments\\");
 
         public void BulkSend(String subject, String contents, String attachment)
         {
 
-            //int test = 0;
-            //for (int i = 0; i < db.Customers.AsEnumerable().ToList().Count; i++)
-            //{
-            //    test = test + 1;
-            //}
+            var context = new IdentityDbContext();
+            var users = context.Users.ToList();
+            String ToEmail = "";
+
+            for (int i = 0; i < users.Count; i++)
+            {
+                ToEmail = users[i].Email;
+
+                var client = new SendGridClient(API_KEY);
+                var from = new EmailAddress("news@mariospizza.com", "A message Mario's Pizza");
+                var to = new EmailAddress(ToEmail, "");
+                var plainTextContent = contents;
+                var htmlContent = "<p>" + contents + "</p>";
+                var msg = MailHelper.CreateSingleEmail(from, to, subject, plainTextContent, htmlContent);
+
+                if (attachment != "")
+                {
+                    var bytes = File.ReadAllBytes(Path + attachment);
+                    var file = Convert.ToBase64String(bytes);
+                    msg.AddAttachment(attachment, file);
+                }
+
+                var response = client.SendEmailAsync(msg);
+            }
 
 
 
-            //Create array of emails to loop through
-            String ToEmail = "malcolm.malloy@gmail.com";
 
-            var client = new SendGridClient(API_KEY);
-            var from = new EmailAddress("news@mariospizza.com", "Career application");
-            var to = new EmailAddress(ToEmail, "");
-            var plainTextContent = contents;
-            var htmlContent = "<p>" + contents + "</p>";
-            var msg = MailHelper.CreateSingleEmail(from, to, subject, plainTextContent, htmlContent);
 
-            var bytes = File.ReadAllBytes(Path + attachment);
-            var file = Convert.ToBase64String(bytes);
-            msg.AddAttachment(attachment, file);
-
-            var response = client.SendEmailAsync(msg);
+            
         }
 
     }

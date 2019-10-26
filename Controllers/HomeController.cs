@@ -55,13 +55,15 @@ namespace FIT5032_Assignment.Controllers
                     //String attachment = model.Attachment;
                     //String fileAttachment = attachment.FileName;
 
-
-                    string path = Server.MapPath("~/Uploads/Attachments/");
-                    string strExt = Path.GetExtension(attachment.FileName);
-                    string saveName = (name + "-" + $@"{DateTime.Now.Ticks}" + strExt);
+                    string saveName = "";
 
                     if (attachment != null)
                     {
+
+                        string path = Server.MapPath("~/Uploads/Attachments/");
+                        string strExt = Path.GetExtension(attachment.FileName);
+                        saveName = (name + "-" + $@"{DateTime.Now.Ticks}" + strExt);
+
                         if (!Directory.Exists(path))
                         {
                             Directory.CreateDirectory(path);
@@ -76,10 +78,11 @@ namespace FIT5032_Assignment.Controllers
                             attachment.SaveAs(path + Path.GetFileName(saveName));
                             ViewBag.Message = "File uploaded successfully.";
                         }
-                    }
+                    } 
 
 
                     EmailSender es = new EmailSender();
+
                     es.Send(toEmail, name, contents, saveName);
 
                     ViewBag.Result = "Email has been sent";
@@ -169,12 +172,14 @@ namespace FIT5032_Assignment.Controllers
                     //String fileAttachment = attachment.FileName;
 
 
-                    string path = Server.MapPath("~/Uploads/Attachments/");
-                    string strExt = Path.GetExtension(attachment.FileName);
-                    string saveName = (name + "-" + $@"{DateTime.Now.Ticks}" + strExt);
+                    string saveName = "";
 
                     if (attachment != null)
                     {
+                        string path = Server.MapPath("~/Uploads/Attachments/");
+                        string strExt = Path.GetExtension(attachment.FileName);
+                        saveName = (name + "-" + $@"{DateTime.Now.Ticks}" + strExt);
+
                         if (!Directory.Exists(path))
                         {
                             Directory.CreateDirectory(path);

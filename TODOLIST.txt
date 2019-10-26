@@ -1,20 +1,16 @@
 TO DO
 
 *Update Customer Table when user is registered with customer details (CustID = ID) 
-*Fix Date format conflict in datepicker in Booking/create
 *Remove Option to choose pizza you have already rated
  or if the pizzaid/userid combo exist in the PizzaRating table direct the user to an edit view 
 *Loop though email column customer table then create array of email for BulkEmailSender 
 *Validate against files over a specific size and remove .txt from file extension check
 
-*Look over all validation in the Models, Controllers and Views
-*Minify Javascript
 *Complete website optimisation
 
 *Look into SendGrid Issue
 
 IF TIME PERMITS
-*Add events ontop of Calendar and remove table
 *Create email table and fill it with sent email data
 *Add time to datepicker
 

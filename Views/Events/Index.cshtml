@@ -5,6 +5,7 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
+
 <h2>Event Calendar</h2>
 <p>Please enter important events for Mario's Pizza</p>
 
@@ -28,7 +29,8 @@
                     @Html.DisplayFor(modelItem => item.Title)
                 </td>
                 <td class="start">
-                    @Html.DisplayFor(modelItem => item.Start)
+                    @*@Html.DisplayFor(modelItem => item.Start)*@
+                    @item.Start.ToString("MMM dd yyy")
                 </td>
                 <td>
                     @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |

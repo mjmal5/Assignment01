@@ -118,6 +118,10 @@ div#DataTables_Table_0_filter {
     text-align: right;
 }
 
+span.fc-time {
+    display: none;
+}
+
 
 /*Contact Us*/
 .contact-details {

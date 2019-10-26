@@ -9,7 +9,7 @@
 
 <div id="calendar"></div>
 <div>
-    <table class="table">
+    <table class="table" style="display:none;">
         <tr>
             <th>
                 @Html.DisplayNameFor(model => model.Title)
@@ -27,7 +27,8 @@
                     @Html.DisplayFor(modelItem => item.Title)
                 </td>
                 <td class="start">
-                    @Html.DisplayFor(modelItem => item.Start)
+                    @*@Html.DisplayFor(modelItem => item.Start)*@
+                    @item.Start.ToString("MMM dd yyy")
                 </td>
             </tr>
         }

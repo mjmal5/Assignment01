@@ -476,7 +476,9 @@
     <Content Include="Scripts\location.min.js" />
     <Content Include="Scripts\mapbox-gl-directions.js" />
     <Content Include="Scripts\mapbox-gl-directions.min.js" />
-    <Content Include="Scripts\pizzaRating.min.js" />
+    <Content Include="Scripts\mapbox-gl-geocoder.min.js" />
+    <Content Include="Scripts\mapbox-gl.js" />
+    <Content Include="Scripts\pizzaRatings.min.js" />
     <Content Include="Scripts\staffCalendar.js" />
     <Content Include="Scripts\DataTables\autoFill.bootstrap.js" />
     <Content Include="Scripts\DataTables\autoFill.bootstrap.min.js" />

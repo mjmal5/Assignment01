@@ -48,12 +48,13 @@ namespace FIT5032_Assignment
 
             //Admin Calendar
             bundles.Add(new ScriptBundle("~/bundles/admincalendar").Include(
-                    "~/Scripts/admincalendar.min.js"
+                    "~/Scripts/admincalendar.js"
             ));
 
             
             //Mapbox (Locations and Restaurant Finder Maps)
             bundles.Add(new ScriptBundle("~/bundles/mapbox").Include(
+                    "~/Scripts/mapbox-gl.js",
                     "~/Scripts/mapbox-gl-directions.min.js",
                     "~/Scripts/location.min.js"
             ));
